@@ -1,4 +1,23 @@
 import { defineConfig } from 'vitepress'
+import fs from 'fs'
+import path from 'path'
+
+// 自動抓取資料夾內檔案的函式
+function getSidebarItems(dirName: string) {
+  // 取得該資料夾的絕對路徑
+  const dirPath = path.resolve(__dirname, `../${dirName}`);
+
+  // 讀取檔案列表
+  return fs.readdirSync(dirPath)
+      .filter(file => file.endsWith('.md') && file !== 'index.md') // 只抓 .md，排除首頁
+      .map(file => {
+        const name = file.replace('.md', '');
+        return {
+          text: name, // 這裡暫時用檔名當文字
+          link: `/${dirName}/${name}`
+        };
+      });
+  }
 
 /**
  * 產生混淆後的雜湊值（Base64 + 字串反轉）
@@ -9,7 +28,7 @@ const generateHash = (str: string) => {
 }
 
 export default defineConfig({
-  // 1. 基本網站資訊
+  // 基本網站資訊
   base: '/YMSH_TMRobot_Textbook/',
   title: "達明機械手臂",
   description: "陽明高中 AI 專班專屬教材",
@@ -19,7 +38,7 @@ export default defineConfig({
     ['meta', { name: 'robots', content: 'noindex, nofollow' }]
   ],
 
-  // 2. 主題設定
+  // 主題設定
   themeConfig: {
     // 導覽列
     outline: 'deep',
@@ -39,31 +58,19 @@ export default defineConfig({
       '/basic/': [
           {
             text: '初階教材',
-            items: [
-              { text: '開機與安全', link: '/basic/test' },
-              { text: '手動教導點位', link: '/basic/test' },
-              { text: '基礎運動指令', link: '/basic/test' }
-            ]
+            items: getSidebarItems('basic')
           }
         ],
       '/intermediate/': [
           {
             text: '中階教材',
-            items: [
-              { text: '開機與安全', link: '/basic/test' },
-              { text: '手動教導點位', link: '/basic/test' },
-              { text: '基礎運動指令', link: '/basic/test' }
-            ]
+            items: getSidebarItems('intermediate')
           }
         ],
       '/advanced/': [
           {
             text: '高階教材',
-            items: [
-              { text: '開機與安全', link: '/basic/test' },
-              { text: '手動教導點位', link: '/basic/test' },
-              { text: '基礎運動指令', link: '/basic/test' }
-            ]
+            items: getSidebarItems('advanced')
           }
           ]
             },
@@ -80,7 +87,7 @@ export default defineConfig({
     }
   },
 
-  // 3. Vite 配置：注入加密所需的變數
+  // Vite 配置：注入加密所需的變數
   vite: {
     define: {
       // 這裡會讀取系統環境變數 SITE_PASSWORD，若無則預設為 123456
