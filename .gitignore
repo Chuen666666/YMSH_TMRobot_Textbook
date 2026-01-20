@@ -1,0 +1,18 @@
+# Node 依賴
+node_modules/
+
+# VitePress 編譯結果
+.vitepress/dist
+.vitepress/cache
+
+# 本地開發環境變數
+.env
+.env.*
+
+# OS 暫存檔
+.DS_Store
+Thumbs.db
+
+# 編輯器設定
+.vscode/
+.idea/
