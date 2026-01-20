@@ -10,6 +10,7 @@ const generateHash = (str: string) => {
 
 export default defineConfig({
   // 1. 基本網站資訊
+  base: '/YMSH_TMRobot_Textbook/',
   title: "達明機械手臂",
   description: "陽明高中 AI 專班專屬教材",
   
