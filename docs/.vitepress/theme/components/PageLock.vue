@@ -58,7 +58,7 @@ const checkPassword = () => {
 
         <Transition name="shake">
           <p v-if="error" class="error-msg">
-            ⚠️ 密碼錯誤，請向陽明高中圖書館詢問
+            ⚠️ 密碼錯誤，請至陽明高中圖書館詢問
           </p>
         </Transition>
       </div>
