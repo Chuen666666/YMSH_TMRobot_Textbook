@@ -7,7 +7,7 @@ hero:
   text: "陽明高中 AI 專班"
   tagline: 從零基礎到參賽的完整教材
   image:
-    src: public/tm-robot-logo.png
+    src: /tm-robot-logo.png
     alt: TM Robot
   actions:
     - theme: brand
