@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as a}from"./chunks/framework.COKoakAU.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"basic/test.md","filePath":"basic/test.md"}'),s={name:"basic/test.md"};function c(r,o,n,i,p,_){return a(),e("div")}const f=t(s,[["render",c]]);export{m as __pageData,f as default};
