@@ -30,8 +30,8 @@ const generateHash = (str: string) => {
 export default defineConfig({
   // 基本網站資訊
   base: '/YMSH_TMRobot_Textbook/',
-  title: "達明機械手臂",
-  description: "陽明高中 AI 專班專屬教材",
+  title: "機械手臂教學",
+  description: "給陽明高中 AI 學生專班專屬的達明機械手臂教材",
   
   // 讓網頁在搜尋引擎中不被索引
   head: [
