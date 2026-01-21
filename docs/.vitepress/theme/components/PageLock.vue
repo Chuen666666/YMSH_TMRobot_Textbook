@@ -77,7 +77,9 @@ const getHash = (str) => {
   return (hash >>> 0).toString(36);
 }
 
-const getTarget = () => '123456' // 你的密碼
+const getTarget = () => {
+  return import.meta.env.SITE_PASSWORD || '123456'
+}
 
 const checkAuth = () => {
   const saved = localStorage.getItem('site_auth')
