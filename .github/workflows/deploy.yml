@@ -28,7 +28,7 @@ jobs:
       - name: Build with Password
         run: npm run docs:build
         env:
-          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+          VITE_SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

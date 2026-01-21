@@ -77,7 +77,7 @@ const getHash = (str) => {
   return (hash >>> 0).toString(36);
 }
 
-const getTarget = () => import.meta.env.SITE_PASSWORD || '123456'
+const getTarget = () => import.meta.env.VITE_SITE_PASSWORD || '123456'
 
 const checkAuth = () => {
   const saved = localStorage.getItem('site_auth')
