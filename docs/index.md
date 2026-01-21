@@ -17,25 +17,21 @@ hero:
       link: /home/about
 
 features:
-  - title: 由淺入深
-    details: 教材分為初、中、高階，帶你一步步變強。
-  - title: 內容詳盡
-    details: 詳細的操作說明，讓你僅透過教材就能學會。
-  - title: 經驗傳承
-    details: 集結學長姐參賽技巧，在賽場發光發熱。
+  - title: 歷年電神
+    details: 陽明高中歷屆學生於達明舉辦的機械手臂競賽中獲獎的名單。
     link: /home/award
     linkText: 前往膜拜
 
   - title: 初階教材
-    details: 包含開機安全、教導點位、以及基礎運動指令。
+    details: 給零基礎的人快速上手機械手臂的操作。
     link: /basic/test
     linkText: 開始學習
   - title: 中階教材
-    details: 深入學習視覺辨識與進階邏輯判斷。
+    details: 給想參加比賽的新手學習比賽必備操作技巧。
     link: /intermediate/test
     linkText: 進入中階
   - title: 高階教材
-    details: 挑戰高效率路徑優化與複雜通訊協議。
+    details: 整合經驗與技巧，專為想在競賽中取得好成績的選手。
     link: /advanced/test
     linkText: 挑戰高階
 ---

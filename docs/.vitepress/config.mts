@@ -44,13 +44,16 @@ export default defineConfig({
     outline: 'deep',
     nav: [
       { text: '首頁', link: '/' },
+      { text: '說明', link: '/home/guide' },
+      { text: '關於', link: '/home/about' },
       { text: '教材',
         items: [
-          { text: '初階：基礎操作', link: '/basic/test' },
-          { text: '中階：初賽必備', link: '/intermediate/test' },
-          { text: '高階：決賽法寶', link: '/advanced/test' }
+          { text: '初階', link: '/basic/test' },
+          { text: '中階', link: '/intermediate/test' },
+          { text: '高階', link: '/advanced/test' }
         ]
-      }
+      },
+      { text: '獲獎', link: '/home/award' }
     ],
 
     // 側邊欄（教材目錄）
