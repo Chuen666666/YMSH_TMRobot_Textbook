@@ -23,6 +23,8 @@ features:
     details: 詳細的操作說明，讓你僅透過教材就能學會。
   - title: 經驗傳承
     details: 集結學長姐參賽技巧，在賽場發光發熱。
+    link: /home/award
+    linkText: 前往膜拜
 
   - title: 初階教材
     details: 包含開機安全、教導點位、以及基礎運動指令。
