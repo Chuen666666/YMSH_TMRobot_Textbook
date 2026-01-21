@@ -43,8 +43,41 @@ features:
   --vp-home-hero-image-filter: drop-shadow(0 0 30px rgba(142, 198, 63, 0.3));
 }
 
+/* 調整圖片位置與動畫 */
+.VPHero .image-src {
+  animation: float 4s ease-in-out infinite;
+  transition: content 0.3s ease;
+  transform: translate(-40px, -30px);
+}
+
+/* 暗色模式圖 */
+.dark .VPHero .image-src {
+  content: url('/tm-robot-logo-darkmode.png');
+}
+
+.VPHero .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translate(-40px, -30px); }
+  50% { transform: translate(-40px, -45px); }
+}
+
+.dark :root {
+  --vp-home-hero-image-filter: drop-shadow(0 0 40px rgba(142, 198, 63, 0.5));
+}
+
+/* 行動裝置適應：手機上通常建議置中，不要位移 */
+@media (max-width: 640px) {
+  .VPHero .image-src {
+    transform: translate(0, 0);
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
 }
 </style>

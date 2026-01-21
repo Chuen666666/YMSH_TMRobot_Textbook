@@ -7,12 +7,13 @@ import { h } from 'vue'
 export default {
   extends: DefaultTheme,
   Layout: () => {
-    // 將 PageLock 放在 Layout 最上方
     return h(DefaultTheme.Layout, null, {
-      'layout-top': () => h(PageLock) 
+      'doc-before': () => h(PageLock),
+      'home-hero-before': () => h(PageLock)
     })
   },
   enhanceApp({ app }) {
     app.component('Icon', Icon)
+    app.component('PageLock', PageLock)
   }
 } satisfies Theme
