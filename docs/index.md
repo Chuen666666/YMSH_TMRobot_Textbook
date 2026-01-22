@@ -40,44 +40,75 @@ features:
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(120deg, #8ec63f 0%, #006583 100%);
-  --vp-home-hero-image-filter: drop-shadow(0 0 30px rgba(142, 198, 63, 0.3));
 }
 
-/* 調整圖片位置與動畫 */
-.VPHero .image-src {
-  animation: float 4s ease-in-out infinite;
-  transition: content 0.3s ease;
-  transform: translate(-40px, -30px);
+/* 固定位置與大小 */
+:deep(.VPHero .image-src) {
+  transform: translate(-125px, -80px) !important;
+  max-width: none !important;
+  width: 320px !important;
+  height: auto !important;
+  /* 平滑淡入效果 */
+  transition: opacity 0.2s ease-in-out;
 }
 
-/* 暗色模式圖 */
-.dark .VPHero .image-src {
-  content: url('/tm-robot-logo-darkmode.png');
-}
-
-.VPHero .image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(-40px, -30px); }
-  50% { transform: translate(-40px, -45px); }
+:deep(.VPHero .image-container) {
+  overflow: visible !important;
 }
 
 .dark :root {
   --vp-home-hero-image-filter: drop-shadow(0 0 40px rgba(142, 198, 63, 0.5));
 }
-
-/* 行動裝置適應：手機上通常建議置中，不要位移 */
-@media (max-width: 640px) {
-  .VPHero .image-src {
-    transform: translate(0, 0);
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-}
 </style>
+
+<script setup>
+import { onMounted, watchEffect, nextTick } from 'vue'
+import { useData } from 'vitepress'
+
+const { isDark } = useData()
+const baseUrl = '/YMSH_TMRobot_Textbook/'
+
+const updateImage = () => {
+  // nextTick 確保 Vue 的響應式狀態已經反映到 DOM
+  nextTick(() => {
+    const img = document.querySelector('.VPHero .image-src')
+    if (!img) return
+
+    const lightSrc = `${baseUrl}tm-robot-logo.png`
+    const darkSrc = `${baseUrl}tm-robot-logo-darkmode.png`
+    const targetSrc = isDark.value ? darkSrc : lightSrc
+
+    // 強制檢查當前 src 是否符合模式
+    if (!img.src.includes(targetSrc)) {
+      img.style.opacity = '0.5' // 轉場微透明
+      img.src = targetSrc
+      img.onload = () => {
+        img.style.opacity = '1'
+      }
+    }
+  })
+}
+
+// 預載圖片防止切換時白屏
+const preloadImages = () => {
+  const images = [
+    `${baseUrl}tm-robot-logo.png`,
+    `${baseUrl}tm-robot-logo-darkmode.png`
+  ]
+  images.forEach(src => {
+    const img = new Image()
+    img.src = src
+  })
+}
+
+onMounted(() => {
+  preloadImages()
+  updateImage()
+})
+
+// 核心：當 isDark 改變時立刻強制更新
+watchEffect(() => {
+  const _ = isDark.value // 建立響應式依賴
+  updateImage()
+})
+</script>
