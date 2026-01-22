@@ -42,13 +42,12 @@ features:
   --vp-home-hero-name-background: linear-gradient(120deg, #8ec63f 0%, #006583 100%);
 }
 
-/* 固定位置與大小 */
+/* 位置與大小 */
 :deep(.VPHero .image-src) {
   transform: translate(-125px, -80px) !important;
   max-width: none !important;
   width: 320px !important;
   height: auto !important;
-  /* 平滑淡入效果 */
   transition: opacity 0.2s ease-in-out;
 }
 
@@ -69,7 +68,9 @@ const { isDark } = useData()
 const baseUrl = '/YMSH_TMRobot_Textbook/'
 
 const updateImage = () => {
-  // nextTick 確保 Vue 的響應式狀態已經反映到 DOM
+  // 判斷是否在瀏覽器環境 (SSR 安全檢查)
+  if (typeof document === 'undefined') return
+
   nextTick(() => {
     const img = document.querySelector('.VPHero .image-src')
     if (!img) return
@@ -78,9 +79,10 @@ const updateImage = () => {
     const darkSrc = `${baseUrl}tm-robot-logo-darkmode.png`
     const targetSrc = isDark.value ? darkSrc : lightSrc
 
-    // 強制檢查當前 src 是否符合模式
-    if (!img.src.includes(targetSrc)) {
-      img.style.opacity = '0.5' // 轉場微透明
+    // 使用 URL 建構子比對路徑，避免比對到完整的 URL 導致失效
+    const currentUrl = new URL(img.src, window.location.origin).pathname
+    if (currentUrl !== targetSrc) {
+      img.style.opacity = '0.5'
       img.src = targetSrc
       img.onload = () => {
         img.style.opacity = '1'
@@ -89,26 +91,23 @@ const updateImage = () => {
   })
 }
 
-// 預載圖片防止切換時白屏
-const preloadImages = () => {
-  const images = [
-    `${baseUrl}tm-robot-logo.png`,
-    `${baseUrl}tm-robot-logo-darkmode.png`
-  ]
-  images.forEach(src => {
-    const img = new Image()
-    img.src = src
-  })
-}
-
 onMounted(() => {
-  preloadImages()
+  // 預載圖片
+  if (typeof window !== 'undefined') {
+    const images = [`${baseUrl}tm-robot-logo.png`, `${baseUrl}tm-robot-logo-darkmode.png`]
+    images.forEach(src => {
+      const img = new Image()
+      img.src = src
+    })
+  }
   updateImage()
 })
 
-// 核心：當 isDark 改變時立刻強制更新
+// 監控切換，確保不影響 SSR 構建
 watchEffect(() => {
-  const _ = isDark.value // 建立響應式依賴
-  updateImage()
+  if (typeof document !== 'undefined') {
+    const _ = isDark.value 
+    updateImage()
+  }
 })
 </script>
