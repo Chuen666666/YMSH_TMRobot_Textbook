@@ -45,7 +45,6 @@ export default defineConfig({
     nav: [
       { text: '首頁', link: '/' },
       { text: '說明', link: '/home/guide' },
-      { text: '關於', link: '/home/about' },
       { text: '教材',
         items: [
           { text: '初階', link: '/basic/test' },
@@ -53,7 +52,8 @@ export default defineConfig({
           { text: '高階', link: '/advanced/test' }
         ]
       },
-      { text: '獲獎', link: '/home/award' }
+      { text: '獲獎', link: '/home/award' },
+      { text: '關於', link: '/home/about' }
     ],
 
     // 側邊欄（教材目錄）
