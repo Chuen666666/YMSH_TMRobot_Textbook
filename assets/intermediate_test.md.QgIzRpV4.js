@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a}from"./chunks/framework.CjkNaYQl.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"intermediate/test.md","filePath":"intermediate/test.md"}'),r={name:"intermediate/test.md"};function s(n,o,i,c,d,m){return a(),t("div")}const f=e(r,[["render",s]]);export{_ as __pageData,f as default};
