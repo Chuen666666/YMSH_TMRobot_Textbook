@@ -1,23 +1,4 @@
 import { defineConfig } from 'vitepress'
-import fs from 'fs'
-import path from 'path'
-
-// 自動抓取資料夾內檔案的函式
-function getSidebarItems(dirName: string) {
-  // 取得該資料夾的絕對路徑
-  const dirPath = path.resolve(__dirname, `../${dirName}`);
-
-  // 讀取檔案列表
-  return fs.readdirSync(dirPath)
-      .filter(file => file.endsWith('.md') && file !== 'index.md') // 只抓 .md，排除首頁
-      .map(file => {
-        const name = file.replace('.md', '');
-        return {
-          text: name, // 這裡暫時用檔名當文字
-          link: `/${dirName}/${name}`
-        };
-      });
-  }
 
 /**
  * 產生混淆後的雜湊值（Base64 + 字串反轉）
@@ -61,19 +42,35 @@ export default defineConfig({
       '/basic/': [
           {
             text: '初階教材',
-            items: getSidebarItems('basic')
+            items: [
+              { 'text': '1. 控制器介紹', link: '/basic/1' },
+              { 'text': '2. 手臂基礎', link: '/basic/2' },
+              { 'text': '3. 收納重點', link: '/basic/3' },
+              { 'text': '4. 登入並取得權限', link: '/basic/4' },
+              { 'text': '5. 軟體基礎篇', link: '/basic/5' }
+            ]
           }
         ],
       '/intermediate/': [
           {
             text: '中階教材',
-            items: getSidebarItems('intermediate')
+            items: [
+              { 'text': '1. 開始練習前與結束後', link: '/intermediate/1' },
+              { 'text': '2. 控制器上的紅色大按鈕', link: '/intermediate/2' },
+              { 'text': '3. 軟體精熟篇', link: '/intermediate/3' },
+              { 'text': '4. 初賽經驗談', link: '/intermediate/4' }
+            ]
           }
         ],
       '/advanced/': [
           {
             text: '高階教材',
-            items: getSidebarItems('advanced')
+            items: [
+              { 'text': '1. 軟體大師篇', link: '/advanced/1' },
+              { 'text': '2. 決賽經驗談', link: '/advanced/2' },
+              { 'text': '3. 更多比賽細節', link: '/advanced/3' },
+              { 'text': '4. 一些心裡話', link: '/advanced/4' }
+            ]
           }
           ]
             },
