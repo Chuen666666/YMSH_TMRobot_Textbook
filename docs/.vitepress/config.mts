@@ -46,9 +46,9 @@ export default defineConfig({
       { text: '首頁', link: '/' },
       { text: '教材',
         items: [
-          { text: '初階', link: '/basic/test' },
-          { text: '中階', link: '/intermediate/test' },
-          { text: '高階', link: '/advanced/test' }
+          { text: '初階', link: '/basic/1' },
+          { text: '中階', link: '/intermediate/1' },
+          { text: '高階', link: '/advanced/1' }
         ]
       },
       { text: '獲獎', link: '/home/award' },

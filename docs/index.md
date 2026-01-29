@@ -24,15 +24,15 @@ features:
 
   - title: 初階教材
     details: 給零基礎的人快速上手機械手臂的操作。
-    link: /basic/test
+    link: /basic/1
     linkText: 開始學習
   - title: 中階教材
     details: 給想參加比賽的新手學習比賽必備操作技巧。
-    link: /intermediate/test
+    link: /intermediate/1
     linkText: 進入中階
   - title: 高階教材
     details: 整合經驗與技巧，專為想在競賽中取得好成績的選手。
-    link: /advanced/test
+    link: /advanced/1
     linkText: 挑戰高階
 ---
 
