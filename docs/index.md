@@ -106,7 +106,7 @@ onMounted(() => {
 // 監控切換，確保不影響 SSR 構建
 watchEffect(() => {
   if (typeof document !== 'undefined') {
-    const _ = isDark.value 
+    const _ = isDark.value
     updateImage()
   }
 })
