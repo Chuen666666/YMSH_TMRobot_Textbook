@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as t,aj as d}from"./chunks/framework.CjkNaYQl.js";const b=JSON.parse('{"title":"5. 軟體基礎篇","description":"","frontmatter":{},"headers":[],"relativePath":"basic/5.md","filePath":"basic/5.md"}'),i={name:"basic/5.md"};function r(c,a,l,n,h,s){return t(),o("div",null,[...a[0]||(a[0]=[d("",53)])])}const u=e(i,[["render",r]]);export{b as __pageData,u as default};
