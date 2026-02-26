@@ -47,7 +47,8 @@ export default defineConfig({
               { 'text': '2. 手臂基礎', link: '/basic/2' },
               { 'text': '3. 收納重點', link: '/basic/3' },
               { 'text': '4. 登入並取得權限', link: '/basic/4' },
-              { 'text': '5. 軟體基礎篇', link: '/basic/5' }
+              { 'text': '5. 軟體基礎篇', link: '/basic/5' },
+              { 'text': '6. 自主練習', link: '/basic/6' }
             ]
           }
         ],
@@ -58,7 +59,8 @@ export default defineConfig({
               { 'text': '1. 開始練習前與結束後', link: '/intermediate/1' },
               { 'text': '2. 控制器上的紅色大按鈕', link: '/intermediate/2' },
               { 'text': '3. 軟體精熟篇', link: '/intermediate/3' },
-              { 'text': '4. 初賽經驗談', link: '/intermediate/4' }
+              { 'text': '4. 初賽經驗談', link: '/intermediate/4' },
+              { 'text': '5. 自主練習', link: '/intermediate/5' }
             ]
           }
         ],
@@ -69,7 +71,8 @@ export default defineConfig({
               { 'text': '1. 軟體大師篇', link: '/advanced/1' },
               { 'text': '2. 決賽經驗談', link: '/advanced/2' },
               { 'text': '3. 更多比賽細節', link: '/advanced/3' },
-              { 'text': '4. 一些心裡話', link: '/advanced/4' }
+              { 'text': '4. 一些心裡話', link: '/advanced/4' },
+              { 'text': '5. 自主練習', link: '/advanced/5' }
             ]
           }
           ]
