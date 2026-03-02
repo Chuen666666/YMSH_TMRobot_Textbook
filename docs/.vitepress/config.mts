@@ -57,10 +57,9 @@ export default defineConfig({
             text: '中階教材',
             items: [
               { 'text': '1. 開始練習前與結束後', link: '/intermediate/1' },
-              { 'text': '2. 控制器上的紅色大按鈕', link: '/intermediate/2' },
-              { 'text': '3. 軟體精熟篇', link: '/intermediate/3' },
-              { 'text': '4. 初賽經驗談', link: '/intermediate/4' },
-              { 'text': '5. 自主練習', link: '/intermediate/5' }
+              { 'text': '2. 軟體精熟篇', link: '/intermediate/2' },
+              { 'text': '3. 初賽經驗談', link: '/intermediate/3' },
+              { 'text': '4. 自主練習', link: '/intermediate/4' }
             ]
           }
         ],
