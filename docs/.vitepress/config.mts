@@ -12,7 +12,7 @@ export default defineConfig({
   // 基本網站資訊
   base: '/YMSH_TMRobot_Textbook/',
   title: "機械手臂教學",
-  titleTemplate: "title | 陽明高中 AI 專班",
+  titleTemplate: "陽明達明機械手臂教材",
   description: "給陽明高中 AI 學生專班專屬的達明機械手臂教材",
 
   // 讓網頁在搜尋引擎中不被索引
