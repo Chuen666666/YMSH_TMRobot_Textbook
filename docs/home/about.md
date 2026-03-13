@@ -9,7 +9,7 @@ outline: false
 
 ## 製作團隊
 
-- [蔡淳宇](https://chuen666666.github.io/)
+- [蔡淳宇](https://chuen666666.github.io/)（主要作者）
 - [陳宥羲](https://www.instagram.com/harry.chen.14855)
 - 陳宇祐
 
