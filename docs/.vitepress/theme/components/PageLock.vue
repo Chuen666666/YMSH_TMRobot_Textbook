@@ -1,6 +1,6 @@
 <template>
   <Transition name="fade">
-    <div v-if="isLocked" class="lock-screen">
+    <div v-if="isLocked && !isWhiteList" class="lock-screen">
       <div class="lock-box">
         <div class="lock-icon">🔐</div>
         <h2>專班教材存取限制</h2>
@@ -14,6 +14,10 @@
             @keyup.enter="login"
           />
           <button @click="login" class="login-btn">進入網站</button>
+          
+          <div class="helper-link">
+            <a :href="guideUrl">忘記密碼或需要協助？</a>
+          </div>
         </div>
         
         <p v-if="errorMsg" class="error-msg">{{ errorMsg }}</p>
@@ -45,29 +49,29 @@ const errorMsg = ref('')
 // 設定區
 const EXPIRE_MS = 10800000 // 3 小時
 const BASE_URL = '/YMSH_TMRobot_Textbook/'
+const guideUrl = `${BASE_URL}home/recovery`
+
+// 【白名單判定】讓忘記密碼頁面可以直接開啟
+const isWhiteList = computed(() => {
+  return route.path.includes('/home/recovery')
+})
 
 // 【關鍵邏輯】精準判定首頁
 const isHomePage = computed(() => {
   let path = route.path
-  
-  // 1. 移除路徑中的 base 前綴
   if (path.startsWith(BASE_URL)) {
     path = path.substring(BASE_URL.length - 1) 
   }
-  
-  // 2. 移除常見的首頁後綴與斜槓
   const cleanPath = path
     .replace(/index\.html$/, '')
     .replace(/\.html$/, '')
     .replace(/\/$/, '')
-  
-  // 3. 如果清理後為空，代表是首頁 (docs/index.md)
   return cleanPath === '' || cleanPath === '/'
 })
 
-// 【顯示控制】確定解鎖且不是首頁才顯示按鈕
+// 【顯示控制】確定解鎖、不是首頁、也不是白名單頁面才顯示按鈕
 const showBackButton = computed(() => {
-  return !isLocked.value && !isHomePage.value
+  return !isLocked.value && !isHomePage.value && !isWhiteList.value
 })
 
 // 安全驗證相關函式
@@ -100,7 +104,7 @@ const checkAuth = () => {
   }
 }
 
-// 監控路由，切換頁面時立即重新判定
+// 監控路由
 watch(() => route.path, () => {
   checkAuth()
 }, { immediate: true })
@@ -156,7 +160,7 @@ onMounted(checkAuth)
 }
 
 .lock-icon { font-size: 48px; margin-bottom: 20px; }
-h2 { margin: 0 0 10px; color: var(--vp-c-text-1); }
+h2 { margin: 0 0 10px; color: var(--vp-c-text-1); font-size: 1.5rem; }
 p { color: var(--vp-c-text-2); font-size: 14px; }
 
 .input-group { margin-top: 30px; }
@@ -172,6 +176,23 @@ input:focus { border-color: var(--vp-c-brand-1); }
   width: 100%; padding: 12px; border-radius: 8px;
   background-color: var(--vp-c-brand-1); color: white;
   font-weight: bold; cursor: pointer; border: none;
+  transition: background-color 0.2s;
+}
+.login-btn:hover { background-color: var(--vp-c-brand-2); }
+
+/* 忘記密碼連結樣式 */
+.helper-link {
+  margin-top: 20px;
+  font-size: 13px;
+}
+.helper-link a {
+  color: var(--vp-c-text-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.helper-link a:hover {
+  color: var(--vp-c-brand-1);
+  text-decoration: underline;
 }
 
 .error-msg { color: #e74c3c; margin-top: 15px; font-weight: bold; }
