@@ -33,6 +33,14 @@ outline: false
 
 若發現手臂有任何損壞，或欲加購末端工具，請告知圖書館主任。
 
+## 找到此網站
+
+- 連結：<https://chuen666666.github.io/YMSH_TMRobot_Textbook/>
+- QR Code：
+    ![QR Code](/QR_Code.png){width=120px}
+- 校網：
+    ![校網中本網站位置]()<!--PHOTO-->
+
 ## 教材編輯
 
 目前這份教材並不開放編輯，若有任何勘誤、說明不符合當前系統版本、欲新增內容修改需求時，請主動與作者取得聯繫：
