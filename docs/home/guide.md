@@ -43,7 +43,7 @@ outline: false
 - QR Code：
     ![QR Code](/QR_Code.png){width=120px}
 - 校網：
-    ![校網中本網站位置]()<!--PHOTO-->
+    ![校網中本網站位置](/ymsh_web_page.jpg)
 
 ## 教材編輯
 
