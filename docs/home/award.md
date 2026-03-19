@@ -2,7 +2,7 @@
 
 此為陽明高中歷屆學生於達明辦之[全國智慧製造應用競賽](https://www.academy.tm-robot.com/competition)獲獎名單
 
-::: tip 名單增加方法
+::: info 名單增加方法
 若有新增名單之需求，可於[網站說明](/home/about)最下面之聯繫方式與我取得聯繫
 :::
 
