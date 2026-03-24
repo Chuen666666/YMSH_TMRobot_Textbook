@@ -74,16 +74,27 @@ const showBackButton = computed(() => {
   return !isLocked.value && !isHomePage.value && !isWhiteList.value
 })
 
-// 安全驗證相關函式
-const getHash = (str) => {
-  let hash = 5381;
-  for (let i = 0; i < str.length; i++) hash = (hash * 33) ^ str.charCodeAt(i);
-  return (hash >>> 0).toString(36);
+/**
+ * 瀏覽器原生 Web Crypto API 計算 SHA-256
+ */
+async function sha256(message) {
+  const msgUint8 = new TextEncoder().encode(message)
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8)
+  const hashArray = Array.from(new Uint8Array(hashBuffer))
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
 }
 
-const getTarget = () => import.meta.env.VITE_SITE_PASSWORD || '123456'
+// 取得由 Vite 注入的 SHA-256 目標值
+const getTargetHash = () => {
+  try {
+    return __SITE_PASSWORD_HASH__
+  } catch (e) {
+    // 降級備用：如果 vite 變數未注入，則用 '123456' 的 SHA-256 值
+    return '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'
+  }
+}
 
-const checkAuth = () => {
+const checkAuth = async () => {
   const saved = localStorage.getItem('site_auth')
   if (!saved) {
     isLocked.value = true
@@ -92,8 +103,10 @@ const checkAuth = () => {
   
   try {
     const { hash, time } = JSON.parse(saved)
-    const target = getTarget()
-    if (hash === getHash(target) && (Date.now() - time) < EXPIRE_MS) {
+    const targetHash = getTargetHash()
+    
+    // 比對存於 localStorage 的 Hash 是否與伺服器當前的 Hash 吻合
+    if (hash === targetHash && (Date.now() - time) < EXPIRE_MS) {
       isLocked.value = false
     } else {
       localStorage.removeItem('site_auth')
@@ -109,16 +122,21 @@ watch(() => route.path, () => {
   checkAuth()
 }, { immediate: true })
 
-const login = () => {
-  const target = getTarget()
-  if (inputPassword.value === target) {
+const login = async () => {
+  if (!inputPassword.value) return
+
+  const inputHash = await sha256(inputPassword.value)
+  const targetHash = getTargetHash()
+
+  if (inputHash === targetHash) {
     const authData = {
-      hash: getHash(target),
+      hash: inputHash,
       time: Date.now()
     }
     localStorage.setItem('site_auth', JSON.stringify(authData))
     isLocked.value = false
     errorMsg.value = ''
+    inputPassword.value = '' // 清除暫存密碼
   } else {
     errorMsg.value = '密碼錯誤'
     inputPassword.value = ''

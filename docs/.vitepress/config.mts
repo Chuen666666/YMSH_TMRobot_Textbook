@@ -1,11 +1,12 @@
 import { defineConfig } from 'vitepress'
+import crypto from 'node:crypto'
 
 /**
  * 產生混淆後的雜湊值（Base64 + 字串反轉）
  * 這裡的邏輯必須與 PageLock.vue 裡的 hash 函數完全一致
  */
-const generateHash = (str: string) => {
-  return Buffer.from(str).toString('base64').split('').reverse().join('');
+const generateSHA256 = (str: string) => {
+  return crypto.createHash('sha256').update(str).digest('hex')
 }
 
 export default defineConfig({
@@ -97,7 +98,7 @@ export default defineConfig({
     define: {
       // 這裡會讀取系統環境變數 SITE_PASSWORD，若無則預設為 123456
       __SITE_PASSWORD_HASH__: JSON.stringify(
-        generateHash(process.env.SITE_PASSWORD || '123456')
+        generateSHA256(process.env.SITE_PASSWORD || '123456')
       )
     },
     // 如果你有使用自定義組件，這能確保編譯順暢
