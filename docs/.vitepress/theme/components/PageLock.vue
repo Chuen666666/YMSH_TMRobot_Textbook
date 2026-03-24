@@ -95,6 +95,9 @@ const getTargetHash = () => {
 }
 
 const checkAuth = async () => {
+  // 核心修正：如果是 SSR 環境（伺服器編譯中），直接跳出，不執行瀏覽器 API
+  if (typeof window === 'undefined') return
+
   const saved = localStorage.getItem('site_auth')
   if (!saved) {
     isLocked.value = true
@@ -105,7 +108,6 @@ const checkAuth = async () => {
     const { hash, time } = JSON.parse(saved)
     const targetHash = getTargetHash()
     
-    // 比對存於 localStorage 的 Hash 是否與伺服器當前的 Hash 吻合
     if (hash === targetHash && (Date.now() - time) < EXPIRE_MS) {
       isLocked.value = false
     } else {
@@ -119,7 +121,10 @@ const checkAuth = async () => {
 
 // 監控路由
 watch(() => route.path, () => {
-  checkAuth()
+  // 只有在瀏覽器環境才執行
+  if (typeof window !== 'undefined') {
+    checkAuth()
+  }
 }, { immediate: true })
 
 const login = async () => {
