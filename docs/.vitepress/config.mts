@@ -96,9 +96,9 @@ export default defineConfig({
   // Vite 配置：注入加密所需的變數
   vite: {
     define: {
-      // 這裡會讀取系統環境變數 SITE_PASSWORD，若無則預設為 123456
+      // 這裡會讀取系統環境變數 VITE_SITE_PASSWORD，若無則預設為 123456
       __SITE_PASSWORD_HASH__: JSON.stringify(
-        generateSHA256(process.env.SITE_PASSWORD || '123456')
+        generateSHA256(process.env.VITE_SITE_PASSWORD || '123456')
       )
     },
     // 如果你有使用自定義組件，這能確保編譯順暢
