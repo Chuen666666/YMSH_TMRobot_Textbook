@@ -10,7 +10,7 @@ If a new award needs to be added, contact me using the links at the bottom of th
 
 ### Logistics Application Group
 
-- Bronze Award: Chun-Yu Tsai, Yu-Yu Chen
+- Bronze Award: Chuen, Uiz
 
 ## 4th Competition (2025)
 

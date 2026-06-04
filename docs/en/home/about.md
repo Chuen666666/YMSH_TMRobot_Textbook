@@ -9,9 +9,9 @@ We are seniors from YMSH AI Program class 112. We made this textbook site simply
 
 ## Team
 
-- [Chun-Yu Tsai](https://chuen666666.github.io/) (main author)
+- [Chuen](https://chuen666666.github.io/) (main author)
 - [Harry Chen](https://www.instagram.com/harry.chen.14855)
-- Yu-Yu Chen
+- Uiz
 
 ## Thanks
 
