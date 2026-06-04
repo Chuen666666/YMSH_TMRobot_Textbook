@@ -1,0 +1,1 @@
+import{_ as e,o as l,c as i,a6 as o}from"./chunks/framework.mtgKxyez.js";const u=JSON.parse('{"title":"3. 收納重點","description":"","frontmatter":{},"headers":[],"relativePath":"basic/3.md","filePath":"basic/3.md"}'),t={name:"basic/3.md"};function c(d,a,r,n,s,_){return l(),i("div",null,[...a[0]||(a[0]=[o("",7)])])}const m=e(t,[["render",c]]);export{u as __pageData,m as default};

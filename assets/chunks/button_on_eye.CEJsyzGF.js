@@ -1,0 +1,1 @@
+const o="/YMSH_TMRobot_Textbook/robot_arm.png",t="/YMSH_TMRobot_Textbook/LM.png",_="/YMSH_TMRobot_Textbook/adjust_board.png",s="/YMSH_TMRobot_Textbook/mechine_and_controller.png",b="/YMSH_TMRobot_Textbook/TM_target.png",n="/YMSH_TMRobot_Textbook/TM_tray.png",M="/YMSH_TMRobot_Textbook/button_on_eye.jpg";export{o as _,t as a,_ as b,s as c,b as d,n as e,M as f};

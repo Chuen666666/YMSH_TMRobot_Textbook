@@ -1,0 +1,1 @@
+const o="/YMSH_TMRobot_Textbook/old_controller.png",t="/YMSH_TMRobot_Textbook/new_controller.png",_="/YMSH_TMRobot_Textbook/power.png",s="/YMSH_TMRobot_Textbook/stop.png",p="/YMSH_TMRobot_Textbook/ma.png",n="/YMSH_TMRobot_Textbook/play.png",b="/YMSH_TMRobot_Textbook/plus.png",M="/YMSH_TMRobot_Textbook/minus.png";export{o as _,t as a,_ as b,s as c,p as d,n as e,b as f,M as g};
