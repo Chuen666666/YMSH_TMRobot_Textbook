@@ -49,24 +49,34 @@ const errorMsg = ref('')
 // 設定區
 const EXPIRE_MS = 10800000 // 3 小時
 const BASE_URL = '/YMSH_TMRobot_Textbook/'
-const guideUrl = `${BASE_URL}home/recovery`
+
+const normalizedPath = computed(() => {
+  let path = route.path
+  if (path.startsWith(BASE_URL)) {
+    path = path.substring(BASE_URL.length - 1)
+  }
+  return path
+    .replace(/index\.html$/, '')
+    .replace(/\.html$/, '')
+    .replace(/\/$/, '')
+})
+
+const isEnglishPage = computed(() => {
+  return normalizedPath.value === '/en' || normalizedPath.value.startsWith('/en/')
+})
+
+const guideUrl = computed(() => {
+  return `${BASE_URL}${isEnglishPage.value ? 'en/' : ''}home/recovery`
+})
 
 // 【白名單判定】讓忘記密碼頁面可以直接開啟
 const isWhiteList = computed(() => {
-  return route.path.includes('/home/recovery')
+  return normalizedPath.value === '/home/recovery' || normalizedPath.value === '/en/home/recovery'
 })
 
 // 【關鍵邏輯】精準判定首頁
 const isHomePage = computed(() => {
-  let path = route.path
-  if (path.startsWith(BASE_URL)) {
-    path = path.substring(BASE_URL.length - 1) 
-  }
-  const cleanPath = path
-    .replace(/index\.html$/, '')
-    .replace(/\.html$/, '')
-    .replace(/\/$/, '')
-  return cleanPath === '' || cleanPath === '/'
+  return normalizedPath.value === '' || normalizedPath.value === '/' || normalizedPath.value === '/en'
 })
 
 // 【顯示控制】確定解鎖、不是首頁、也不是白名單頁面才顯示按鈕
@@ -153,7 +163,7 @@ const goBack = () => {
   if (window.history.length > 1) {
     window.history.back()
   } else {
-    router.go(BASE_URL)
+    router.go(`${BASE_URL}${isEnglishPage.value ? 'en/' : ''}`)
   }
 }
 

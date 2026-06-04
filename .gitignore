@@ -4,6 +4,9 @@ node_modules/
 # VitePress 編譯結果
 .vitepress/dist
 .vitepress/cache
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+docs/.vitepress/.temp/
 
 # 本地開發環境變數
 .env
