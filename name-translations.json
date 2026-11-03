@@ -35,9 +35,13 @@
             "status": "accepted"
         },
         {
-            "traditionalChinese": "王淵聖",
-            "english": { "default": "Yuan-Sheng Wang", "award": null },
-            "source": { "kind": "existing-project-translation", "reference": ["docs/en/home/about.md"] },
+            "traditionalChinese": "王聖淵",
+            "english": { "default": "Sheng-Yuan Wang", "award": null },
+            "source": {
+                "kind": "existing-project-translation",
+                "reference": ["docs/en/home/about.md"],
+                "note": "Traditional Chinese name corrected by the maintainer; English syllable order updated to match."
+            },
             "status": "accepted"
         },
         {

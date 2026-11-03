@@ -16,7 +16,7 @@ We are seniors from YMSH AI Program class 112. We made this textbook site simply
 ## Thanks
 
 - Former library director **Fang-Jin Shih**
-- Library director **Yuan-Sheng Wang**
+- Library director **Sheng-Yuan Wang**
 - Living Technology teacher **Chia-Ching Hsu**
 - System administrator **Hsiu-Yung Chu**
 - YMSH award-winning competitors **Yi-You Kuo and Yu-Shan Wu**
