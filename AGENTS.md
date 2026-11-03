@@ -129,6 +129,21 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   meaning, safety warnings, and task requirements. A translation may adapt
   wording, but it must not add or omit operating behavior.
 
+## Git Collaboration
+
+- Do not assume that a contributor knows how to use Git or GitHub. The agent is
+  responsible for carrying completed repository changes through local checks,
+  commit, push, and CI monitoring instead of leaving Git commands for the
+  contributor to run.
+- Every completed batch of changes must be committed and pushed; do not leave
+  finished work only in the local working tree. Before committing or pushing,
+  proactively ask the user whether they have finished all changes for the
+  current batch, and wait for explicit confirmation. Do not push while the user
+  may still be editing or supplying more material.
+- After the user confirms that the batch is complete, run the applicable local
+  checks, commit all intended files without including unrelated changes, push
+  the commit, and follow the CI monitoring rules below.
+
 ## Markdown Tooling
 
 - The `lint:md`, `format:md`, and `format:md:check` scripts apply only to

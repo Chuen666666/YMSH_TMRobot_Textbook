@@ -62,6 +62,29 @@ TMRobot/
 └─ package.json         # 相依套件與 npm 指令
 ```
 
+## 教材協作與求助
+
+建議使用 AI 協助撰寫教材，但協作者仍需提供正確的教學內容與實際操作經驗。可以選擇
+以下任一方式：
+
+1. 告訴 AI 教學主題、對象、操作步驟、注意事項與預期成果，請 AI 依現有教材風格整理
+   成 Markdown，並補齊繁體中文及英文版本。
+2. 先自行撰寫初稿 Markdown，再請 AI 改善結構、用詞、雙語一致性與可讀性，同時檢查
+   是否遺漏必要步驟或安全提醒。
+
+是否需要圖片、使用哪張圖片及圖片放置位置，應由熟悉教材內容的協作者決定。AI 不應
+主動建議插圖位置；需要加入圖片時，請由協作者明確告知 AI 圖片檔案與預定位置。
+
+不熟悉 Markdown、Git 或 GitHub 並不影響協作。完成一批內容後，請告訴 AI 已沒有其他
+修改，並確認可以提交；AI 會依專案規範執行格式化、檢查、commit、push 及 CI 追蹤。
+
+> 最重要的是：如果不知道怎麼寫、不確定內容是否合適，或希望有人協助檢查、改寫，
+> 請直接到網站的[關於我們](https://tm.chuen666666.com/home/about)頁面聯絡製作團隊。
+> 如果希望網站增加功能，也可以透過 GitHub [Discussions](https://github.com/Chuen666666/YMSH_TMRobot_Textbook/discussions)、
+> [Issues](https://github.com/Chuen666666/YMSH_TMRobot_Textbook/issues) 或
+> [Pull Requests](https://github.com/Chuen666666/YMSH_TMRobot_Textbook/pulls)提出。即使只有初步想法，
+> 也歡迎先與我們討論，不需要等到內容完整才提出。
+
 ## 編輯與驗證
 
 教材頁面使用 Markdown 撰寫。新增頁面後，請同步更新
