@@ -1,5 +1,10 @@
+import { withPwa } from '@vite-pwa/vitepress'
 import { defineConfig } from 'vitepress'
 import crypto from 'node:crypto'
+import { fileURLToPath } from 'node:url'
+
+const SITE_BASE = '/YMSH_TMRobot_Textbook/'
+const OUT_DIR = fileURLToPath(new URL('./dist', import.meta.url))
 
 /**
  * 產生混淆後的雜湊值（Base64 + 字串反轉）
@@ -44,12 +49,12 @@ const zhSidebar = {
     {
       text: '初階教材',
       items: [
-        { 'text': '1. 控制器介紹', link: '/basic/1' },
-        { 'text': '2. 手臂基礎', link: '/basic/2' },
-        { 'text': '3. 收納重點', link: '/basic/3' },
-        { 'text': '4. 登入並取得權限', link: '/basic/4' },
-        { 'text': '5. 軟體基礎篇', link: '/basic/5' },
-        { 'text': '6. 自主練習', link: '/basic/6' }
+        { text: '1. 控制器介紹', link: '/basic/1' },
+        { text: '2. 手臂基礎', link: '/basic/2' },
+        { text: '3. 收納重點', link: '/basic/3' },
+        { text: '4. 登入並取得權限', link: '/basic/4' },
+        { text: '5. 軟體基礎篇', link: '/basic/5' },
+        { text: '6. 自主練習', link: '/basic/6' }
       ]
     }
   ],
@@ -57,10 +62,10 @@ const zhSidebar = {
     {
       text: '中階教材',
       items: [
-        { 'text': '1. 開始練習前與結束後', link: '/intermediate/1' },
-        { 'text': '2. 軟體精熟篇', link: '/intermediate/2' },
-        { 'text': '3. 初賽經驗談', link: '/intermediate/3' },
-        { 'text': '4. 自主練習', link: '/intermediate/4' }
+        { text: '1. 開始練習前與結束後', link: '/intermediate/1' },
+        { text: '2. 軟體精熟篇', link: '/intermediate/2' },
+        { text: '3. 初賽經驗談', link: '/intermediate/3' },
+        { text: '4. 自主練習', link: '/intermediate/4' }
       ]
     }
   ],
@@ -68,11 +73,11 @@ const zhSidebar = {
     {
       text: '高階教材',
       items: [
-        { 'text': '1. 軟體大師篇', link: '/advanced/1' },
-        { 'text': '2. 決賽經驗談', link: '/advanced/2' },
-        { 'text': '3. 更多比賽細節', link: '/advanced/3' },
-        { 'text': '4. 一些心裡話', link: '/advanced/4' },
-        { 'text': '5. 自主練習', link: '/advanced/5' }
+        { text: '1. 軟體大師篇', link: '/advanced/1' },
+        { text: '2. 決賽經驗談', link: '/advanced/2' },
+        { text: '3. 更多比賽細節', link: '/advanced/3' },
+        { text: '4. 一些心裡話', link: '/advanced/4' },
+        { text: '5. 自主練習', link: '/advanced/5' }
       ]
     }
   ]
@@ -117,18 +122,83 @@ const enSidebar = {
   ]
 }
 
-export default defineConfig({
+const config = defineConfig({
   // 基本網站資訊
-  base: '/YMSH_TMRobot_Textbook/',
-  title: "機械手臂教學",
-  titleTemplate: "陽明達明機械手臂教材",
-  description: "給陽明高中 AI 學生專班專屬的達明機械手臂教材",
+  base: SITE_BASE,
+  outDir: OUT_DIR,
+  title: '機械手臂教學',
+  titleTemplate: '陽明達明機械手臂教材',
+  description: '給陽明高中 AI 學生專班專屬的達明機械手臂教材',
 
   // 讓網頁在搜尋引擎中不被索引
   head: [
     ['meta', { name: 'robots', content: 'noindex, nofollow' }],
-    ['link', { rel: 'icon', href: '/YMSH_TMRobot_Textbook/logo.png', type: 'image/png' }]
+    ['meta', { name: 'theme-color', content: '#006583' }],
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: `${SITE_BASE}favicon.ico`,
+        sizes: 'any'
+      }
+    ],
+    [
+      'link',
+      {
+        rel: 'apple-touch-icon',
+        href: `${SITE_BASE}apple-touch-icon-180x180.png`
+      }
+    ]
   ],
+
+  // PWA：提供安裝、離線瀏覽及新版本更新提示
+  pwa: {
+    registerType: 'prompt',
+    includeManifestIcons: false,
+    manifest: {
+      id: SITE_BASE,
+      name: '陽明高中達明機械手臂教材',
+      short_name: '達明機械手臂教材',
+      description: '給陽明高中 AI 學生專班專屬的達明機械手臂教材',
+      lang: 'zh-TW',
+      start_url: SITE_BASE,
+      scope: SITE_BASE,
+      display: 'standalone',
+      theme_color: '#006583',
+      background_color: '#ffffff',
+      categories: ['education'],
+      icons: [
+        {
+          src: 'pwa-64x64.png',
+          sizes: '64x64',
+          type: 'image/png'
+        },
+        {
+          src: 'pwa-192x192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: 'pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        },
+        {
+          src: 'maskable-icon-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'maskable'
+        }
+      ]
+    },
+    generateSW: {
+      cleanupOutdatedCaches: true,
+      globPatterns: ['**/*.{css,js,html,svg,png,jpg,jpeg,webp,woff2}']
+    },
+    experimental: {
+      includeAllowlist: true
+    }
+  },
 
   // 主題設定
   themeConfig: {
@@ -193,3 +263,5 @@ export default defineConfig({
     }
   }
 })
+
+export default withPwa(config)

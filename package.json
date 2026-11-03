@@ -5,19 +5,24 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "pwa:assets": "pwa-assets-generator",
+    "docs:dev": "cd docs && vitepress dev .",
+    "docs:build": "cd docs && vitepress build .",
+    "docs:preview": "cd docs && vitepress preview ."
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.14.0"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^25.0.9",
+    "@types/node": "22.20.5",
+    "@vite-pwa/assets-generator": "2.0.0",
+    "@vite-pwa/vitepress": "2.0.1",
+    "magicast": "0.5.5",
+    "rolldown": "1.2.16",
     "vitepress": "^1.6.4",
-    "vue": "^3.5.27"
+    "vue": "3.5.44"
   }
 }

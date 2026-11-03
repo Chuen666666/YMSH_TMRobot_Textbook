@@ -2,13 +2,13 @@
 
 這是一套提供臺北市立陽明高中 AI 專班使用的達明機械手臂教材。網站以 VitePress 建置，內容包含初階、中階與高階課程，並提供繁體中文及英文版本。
 
-網站：<https://chuen666666.github.io/YMSH_TMRobot_Textbook/>
+網站：<https://chuen666666.com/YMSH_TMRobot_Textbook/>
 
 > 本教材僅供校內教學使用，請勿公開教材內容、網站密碼或其他受限制資訊。
 
 ## 開發環境
 
-- Node.js 18 以上版本
+- Node.js 22.14 以上版本
 - npm
 
 ## 本機執行
@@ -64,3 +64,16 @@ npm run docs:build
 ```
 
 推送至 `main` 分支後，GitHub Actions 會使用儲存庫中的 `SITE_PASSWORD` Secret 建置並部署至 GitHub Pages。
+
+## PWA 與離線瀏覽
+
+網站支援安裝為 PWA。使用支援的瀏覽器開啟正式網站後，可以透過瀏覽器的
+「安裝應用程式」或「加入主畫面」功能安裝。
+
+第一次在線上完整載入網站後，Service Worker 會快取教材頁面與圖片，之後可在
+離線時閱讀已快取的內容。網站有新版本時，頁面右下角會顯示更新提示，由使用者
+決定何時重新載入。
+
+PWA manifest 與 Service Worker 會在執行 `npm run docs:build` 時產生。若更新
+`docs/public/logo.png`，請執行 `npm run pwa:assets` 重新產生各尺寸應用程式圖示，
+並將更新後的圖示提交至版本控制。

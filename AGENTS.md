@@ -19,9 +19,9 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 - `docs/home/` and `docs/en/home/`: supporting pages for each locale.
 - `docs/public/`: static assets served from the site root.
 - `docs/.vitepress/config.mts`: locales, navigation, sidebars, base path, and
-  password hash injection.
+  PWA settings, and password hash injection.
 - `docs/.vitepress/theme/`: custom theme components, including the password gate
-  and keyboard navigation.
+  keyboard navigation, and PWA update prompt.
 - `.github/workflows/deploy.yml`: GitHub Pages deployment.
 
 ## Editing Rules
@@ -35,7 +35,12 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 - Put images and other static files in `docs/public/`. Reference them from
   Markdown with root-relative paths such as `/robot_arm.png`.
 - Preserve the configured deployment base, `/YMSH_TMRobot_Textbook/`, when
-  writing theme code or constructing URLs.
+  writing theme code, PWA settings, or constructing URLs.
+- Keep the PWA manifest `id`, `start_url`, and `scope` aligned with the deployment
+  base. After changing `docs/public/logo.png`, run `npm run pwa:assets` and commit
+  the regenerated icons in `docs/public/`.
+- Keep the Node.js requirement in `package.json`, `.github/workflows/deploy.yml`,
+  and `README.md` synchronized. PWA 2.x requires Node.js 22.14 or newer.
 - Do not expose real passwords or repository secrets. `VITE_SITE_PASSWORD` is
   supplied by the deployment workflow; the local fallback is only for
   development.
