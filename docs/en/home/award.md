@@ -16,5 +16,5 @@ If a new award needs to be added, contact me using the links at the bottom of th
 
 ### Basic Group B
 
-- Gold Award: Yi-You Kuo, Yu-Shan Wu
-- Silver Award: Che-Rui Chung, Fan-Kai Kuo
+- Gold Award: KUO, YI-YOU; WU, YU-SHAN
+- Silver Award: CHUNG, CHE-RUI; KUO, FAN-KAI

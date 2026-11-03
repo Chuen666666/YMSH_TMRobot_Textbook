@@ -100,13 +100,15 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   lessons should read naturally and use the same established technical terms,
   not mirror Chinese sentence structure word for word.
 - On `docs/home/award.md` and `docs/en/home/award.md`, render Chinese personal
-  names using Republic of China passport conventions. Use the person's exact
-  passport romanization when available and format it as `SURNAME, GIVEN-NAME`,
-  with the family name first, a comma after it, and a hyphen between given-name
-  syllables. Do not reverse the name into Western order or substitute a nickname,
-  username, or informal spelling. If the official spelling is unknown, use the
-  Bureau of Consular Affairs name-translation system only to prepare a draft,
-  tell the contributor that confirmation is required, and do not present the
+  names with this strict priority: (1) if the person supplied an anonymous
+  display name, reproduce it exactly without translating, reordering, changing
+  case, or changing punctuation; (2) if the person supplied a romanized name,
+  preserve that spelling and change only its presentation to the Republic of
+  China passport format `SURNAME, GIVEN-NAME`, with the family name first, a
+  comma after it, uppercase letters, and a hyphen between given-name syllables;
+  (3) if no romanization was supplied, use the Bureau of Consular Affairs
+  name-translation standard and passport format to prepare a draft, then tell
+  the contributor that confirmation is required. Never present an unconfirmed
   draft as the person's verified passport name.
 - Keep paired Traditional Chinese and English lessons equivalent in technical
   meaning, safety warnings, task requirements, and image references. A
