@@ -149,6 +149,12 @@ watch(
 const login = async () => {
   if (!inputPassword.value) return;
 
+  if (!globalThis.isSecureContext || !globalThis.crypto?.subtle) {
+    errorMsg.value = "目前網站尚未啟用 HTTPS，暫時無法登入";
+    inputPassword.value = "";
+    return;
+  }
+
   const inputHash = await sha256(inputPassword.value);
   const targetHash = getTargetHash();
 
