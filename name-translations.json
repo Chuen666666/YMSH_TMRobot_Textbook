@@ -1,0 +1,85 @@
+{
+    "version": 1,
+    "description": "Authoritative Traditional Chinese-to-English personal-name registry for this repository.",
+    "passportFormatReference": "https://www.boca.gov.tw/sp-natr-singleform-1.html",
+    "names": [
+        {
+            "traditionalChinese": "蔡淳宇",
+            "english": { "default": "Chuen", "award": "Chuen" },
+            "source": {
+                "kind": "project-provided-anonymous",
+                "reference": ["docs/en/home/about.md", "docs/en/home/award.md"]
+            },
+            "status": "accepted"
+        },
+        {
+            "traditionalChinese": "陳宥羲",
+            "english": { "default": "Harry Chen", "award": null },
+            "source": { "kind": "existing-project-translation", "reference": ["docs/en/home/about.md"] },
+            "status": "accepted"
+        },
+        {
+            "traditionalChinese": "陳宇祐",
+            "english": { "default": "Uiz", "award": "Uiz" },
+            "source": {
+                "kind": "project-provided-anonymous",
+                "reference": ["docs/en/home/about.md", "docs/en/home/award.md"]
+            },
+            "status": "accepted"
+        },
+        {
+            "traditionalChinese": "施芳斳",
+            "english": { "default": "Fang-Jin Shih", "award": null },
+            "source": { "kind": "existing-project-translation", "reference": ["docs/en/home/about.md"] },
+            "status": "accepted"
+        },
+        {
+            "traditionalChinese": "王淵聖",
+            "english": { "default": "Yuan-Sheng Wang", "award": null },
+            "source": { "kind": "existing-project-translation", "reference": ["docs/en/home/about.md"] },
+            "status": "accepted"
+        },
+        {
+            "traditionalChinese": "徐嘉靖",
+            "english": { "default": "Chia-Ching Hsu", "award": null },
+            "source": { "kind": "existing-project-translation", "reference": ["docs/en/home/about.md"] },
+            "status": "accepted"
+        },
+        {
+            "traditionalChinese": "朱秀勇",
+            "english": { "default": "Hsiu-Yung Chu", "award": null },
+            "source": { "kind": "existing-project-translation", "reference": ["docs/en/home/about.md"] },
+            "status": "accepted"
+        },
+        {
+            "traditionalChinese": "郭羿攸",
+            "english": { "default": "Yi-You Kuo", "award": "KUO, YI-YOU" },
+            "source": {
+                "kind": "project-provided-romanization",
+                "reference": ["docs/en/home/about.md", "docs/en/home/award.md"]
+            },
+            "status": "accepted"
+        },
+        {
+            "traditionalChinese": "鄔語珊",
+            "english": { "default": "Yu-Shan Wu", "award": "WU, YU-SHAN" },
+            "source": {
+                "kind": "project-provided-romanization",
+                "reference": ["docs/en/home/about.md", "docs/en/home/award.md"]
+            },
+            "status": "accepted"
+        },
+        {
+            "traditionalChinese": "鍾喆睿",
+            "english": { "default": "Che-Rui Chung", "award": "CHUNG, CHE-RUI" },
+            "source": { "kind": "project-provided-romanization", "reference": ["docs/en/home/award.md"] },
+            "status": "accepted"
+        },
+        {
+            "traditionalChinese": "郭凡愷",
+            "english": { "default": "Fan-Kai Kuo", "award": "KUO, FAN-KAI" },
+            "source": { "kind": "project-provided-romanization", "reference": ["docs/en/home/award.md"] },
+            "status": "accepted"
+        }
+    ]
+}

@@ -23,6 +23,8 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 - `docs/.vitepress/theme/`: custom theme components, including the password gate
   keyboard navigation, and PWA update prompt.
 - `.github/workflows/deploy.yml`: GitHub Pages deployment.
+- `name-translations.json`: authoritative bilingual personal-name spellings,
+  display forms, sources, and confirmation status.
 
 ## Editing Rules
 
@@ -36,6 +38,18 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   Chinese and English versions. When one locale is missing, do not leave the
   pair incomplete or ask the contributor to translate ordinary prose: use the
   existing page as the source and create the missing translation yourself.
+- Before translating or checking a personal name, look it up by its exact
+  Traditional Chinese spelling in `name-translations.json`. Reuse the registered
+  `english.default` value, or `english.award` on the English award page, exactly;
+  an accepted entry is authoritative and must not be repeatedly re-derived or
+  reformatted from the Chinese name.
+- When the user requests a different personal-name translation or display form,
+  update `name-translations.json` first, record the new source and status, and
+  then update every repository occurrence to match it.
+- Add previously unregistered names to `name-translations.json` as part of the
+  same bilingual change. Record where the English value came from. Use
+  `status: "accepted"` for a project-approved value and
+  `status: "needs-confirmation"` for an agent-generated draft.
 - When changing shared lesson content, always update the matching page in the
   other locale in the same change.
 - Keep navigation and sidebar entries in `docs/.vitepress/config.mts`
@@ -100,7 +114,8 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   lessons should read naturally and use the same established technical terms,
   not mirror Chinese sentence structure word for word.
 - On `docs/home/award.md` and `docs/en/home/award.md`, render Chinese personal
-  names with this strict priority: (1) if the person supplied an anonymous
+  names through `name-translations.json` with this strict priority: (1) if the
+  person supplied an anonymous
   display name, reproduce it exactly without translating, reordering, changing
   case, or changing punctuation; (2) if the person supplied a romanized name,
   preserve that spelling and change only its presentation to the Republic of
@@ -167,6 +182,9 @@ bilingual content check:
   the same asset, but images containing text must use the correct localized
   asset. If that asset is unavailable, report the exact missing image and locale
   to the contributor and request it instead of silently passing validation.
+- Compare every translated personal name with `name-translations.json`. Add any
+  missing entry with its source and status, and reject page-specific spelling or
+  formatting that differs from the registered display value.
 
 For interactive checks, run:
 
