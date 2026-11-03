@@ -4,6 +4,7 @@ import Icon from './components/Icon.vue';
 import PageLock from './components/PageLock.vue';
 import KeyboardPager from './components/KeyboardPager.vue';
 import PwaPrompt from './components/PwaPrompt.vue';
+import './styles.css';
 import {h} from 'vue';
 
 export default {

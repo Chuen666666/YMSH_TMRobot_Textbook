@@ -116,8 +116,16 @@ onBeforeMount(async () => {
 
 @media (max-width: 640px) {
   .pwa-prompt {
-    right: 16px;
-    bottom: 16px;
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: auto;
+    max-width: calc(100vw - 24px);
+    padding: 14px;
+    left: max(12px, env(safe-area-inset-left));
+  }
+
+  .pwa-actions button {
+    min-height: 44px;
   }
 }
 </style>

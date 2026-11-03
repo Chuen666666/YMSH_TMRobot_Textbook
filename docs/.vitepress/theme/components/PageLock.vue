@@ -186,11 +186,15 @@ onMounted(checkAuth);
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+    max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
   background-color: var(--vp-c-bg);
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
 }
 
 .lock-box {
@@ -230,6 +234,7 @@ input {
   color: var(--vp-c-text-1);
   margin-bottom: 15px;
   outline: none;
+  font-size: 16px;
 }
 input:focus {
   border-color: var(--vp-c-brand-1);
@@ -245,6 +250,7 @@ input:focus {
   cursor: pointer;
   border: none;
   transition: background-color 0.2s;
+  min-height: 46px;
 }
 .login-btn:hover {
   background-color: var(--vp-c-brand-2);
@@ -322,10 +328,26 @@ input:focus {
 }
 
 @media (max-width: 768px) {
+  .lock-box {
+    width: 100%;
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .lock-icon {
+    margin-bottom: 12px;
+    font-size: 40px;
+  }
+
+  .input-group {
+    margin-top: 24px;
+  }
+
   .back-floating-btn {
-    bottom: 25px;
-    left: 20px;
-    padding: 10px 18px;
+    bottom: max(14px, env(safe-area-inset-bottom));
+    left: max(14px, env(safe-area-inset-left));
+    min-height: 44px;
+    padding: 10px 16px;
     font-size: 14px;
   }
 }

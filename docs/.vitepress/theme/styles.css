@@ -1,0 +1,79 @@
+.vp-doc {
+    overflow-wrap: break-word;
+}
+
+.vp-doc img:not(.tm-icon) {
+    max-width: 100%;
+    height: auto;
+}
+
+.vp-doc table {
+    max-width: 100%;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+.controller-comparison {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.controller-comparison > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+}
+
+@media (max-width: 767px) {
+    .vp-doc p,
+    .vp-doc li {
+        line-height: 1.75;
+    }
+
+    .vp-doc h2 {
+        margin-top: 40px;
+    }
+
+    .vp-doc th,
+    .vp-doc td {
+        padding: 8px 12px;
+    }
+
+    .vp-doc .custom-block {
+        padding: 14px 16px;
+    }
+
+    .controller-comparison {
+        flex-wrap: wrap;
+        gap: 16px 12px;
+    }
+
+    .controller-comparison > div {
+        flex: 1 1 132px;
+    }
+
+    .controller-comparison img {
+        width: auto !important;
+        max-width: 100%;
+        height: auto !important;
+        max-height: 170px;
+    }
+
+    .VPHero .VPButton {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 374px) {
+    .controller-comparison > div {
+        flex-basis: 120px;
+    }
+}

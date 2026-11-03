@@ -55,6 +55,21 @@ features:
   overflow: visible !important;
 }
 
+@media (max-width: 959px) {
+  :deep(.VPHero .image-src) {
+    width: min(240px, 68vw) !important;
+    max-width: 68vw !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+@media (max-width: 639px) {
+  :deep(.VPHero .image-container) {
+    width: min(280px, 82vw) !important;
+    height: 260px !important;
+  }
+}
+
 .dark :root {
   --vp-home-hero-image-filter: drop-shadow(0 0 40px rgba(142, 198, 63, 0.5));
 }
