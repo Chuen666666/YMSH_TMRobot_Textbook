@@ -91,7 +91,7 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 
 - The `lint:md`, `format:md`, and `format:md:check` scripts apply only to
   `docs/**/*.md`, `README.md`, and `AGENTS.md`. Do not apply these commands or
-  infer their style rules for Vue, TypeScript, JavaScript, CSS, YAML, JSON, or
+  infer markdownlint rules for Vue, TypeScript, JavaScript, CSS, YAML, JSON, or
   any other non-Markdown file type.
 - Use `npm run format:md` to format Markdown intentionally. Do not run an
   unscoped repository-wide formatter as a substitute.
@@ -99,11 +99,26 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   every triggered GitHub Actions run until it completes. If any run fails,
   report the failing workflow, job, step, file when applicable, and diagnostic
   to the user instead of claiming the push succeeded.
-- If the failure is specifically from `Lint Markdown` or
-  `Check Markdown formatting`, explain the exact Markdown issue and ask whether
-  the user wants it fixed before editing and pushing another commit. Do not
-  automatically rewrite lesson content after a push solely to clear those two
-  checks.
+- If `Lint Markdown` fails, or `Check formatting` fails for a Markdown file,
+  explain the exact Markdown issue and ask whether the user wants it fixed
+  before editing and pushing another commit. Do not automatically rewrite lesson
+  content after a push solely to clear those checks.
+
+## Other Formatting
+
+- `npm run format` and `npm run format:check` use the repository Prettier config
+  for Markdown, TypeScript, JavaScript, Vue, JSON, JSONC, and YAML. They do not
+  impose markdownlint rules on non-Markdown files.
+- The repository Prettier options mirror the maintainer's VS Code preferences:
+  four-space TypeScript/JavaScript and JSON, 120-column lines, single-quoted
+  JavaScript, semicolons, and no trailing commas. Vue, Markdown, and YAML retain
+  two-space indentation; Markdown also preserves existing prose wrapping.
+- Standalone CSS uses VS Code's built-in CSS formatter with two-space
+  indentation. It is not currently part of the Prettier check; do not run the
+  Markdown scripts on CSS.
+- Do not introduce ESLint, Stylelint, or another semantic linter unless the
+  repository adopts corresponding rules and editor support. The current checks
+  intentionally validate formatting plus Markdown semantics only.
 
 ## Validation
 

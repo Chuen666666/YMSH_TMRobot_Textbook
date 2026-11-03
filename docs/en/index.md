@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "TM Robot Textbook"
-  text: "YMSH AI Program"
+  name: 'TM Robot Textbook'
+  text: 'YMSH AI Program'
   tagline: A complete guide from zero basics to competition prep
   image:
     src: /tm-robot-logo.png

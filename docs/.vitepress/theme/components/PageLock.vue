@@ -7,12 +7,7 @@
         <p>請輸入授權密碼以繼續閱覽</p>
 
         <div class="input-group">
-          <input
-            v-model="inputPassword"
-            type="password"
-            placeholder="請輸入密碼"
-            @keyup.enter="login"
-          />
+          <input v-model="inputPassword" type="password" placeholder="請輸入密碼" @keyup.enter="login" />
           <button @click="login" class="login-btn">進入網站</button>
 
           <div class="helper-link">
@@ -33,18 +28,18 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch } from "vue";
-import { useRoute, useRouter } from "vitepress";
+import {ref, onMounted, computed, watch} from 'vue';
+import {useRoute, useRouter} from 'vitepress';
 
 const route = useRoute();
 const router = useRouter();
 const isLocked = ref(true);
-const inputPassword = ref("");
-const errorMsg = ref("");
+const inputPassword = ref('');
+const errorMsg = ref('');
 
 // 設定區
 const EXPIRE_MS = 10800000; // 3 小時
-const BASE_URL = "/";
+const BASE_URL = '/';
 
 const normalizedPath = computed(() => {
   let path = route.path;
@@ -52,36 +47,27 @@ const normalizedPath = computed(() => {
     path = path.substring(BASE_URL.length - 1);
   }
   return path
-    .replace(/index\.html$/, "")
-    .replace(/\.html$/, "")
-    .replace(/\/$/, "");
+    .replace(/index\.html$/, '')
+    .replace(/\.html$/, '')
+    .replace(/\/$/, '');
 });
 
 const isEnglishPage = computed(() => {
-  return (
-    normalizedPath.value === "/en" || normalizedPath.value.startsWith("/en/")
-  );
+  return normalizedPath.value === '/en' || normalizedPath.value.startsWith('/en/');
 });
 
 const guideUrl = computed(() => {
-  return `${BASE_URL}${isEnglishPage.value ? "en/" : ""}home/recovery`;
+  return `${BASE_URL}${isEnglishPage.value ? 'en/' : ''}home/recovery`;
 });
 
 // 【白名單判定】讓忘記密碼頁面可以直接開啟
 const isWhiteList = computed(() => {
-  return (
-    normalizedPath.value === "/home/recovery" ||
-    normalizedPath.value === "/en/home/recovery"
-  );
+  return normalizedPath.value === '/home/recovery' || normalizedPath.value === '/en/home/recovery';
 });
 
 // 【關鍵邏輯】精準判定首頁
 const isHomePage = computed(() => {
-  return (
-    normalizedPath.value === "" ||
-    normalizedPath.value === "/" ||
-    normalizedPath.value === "/en"
-  );
+  return normalizedPath.value === '' || normalizedPath.value === '/' || normalizedPath.value === '/en';
 });
 
 // 【顯示控制】確定解鎖、不是首頁、也不是白名單頁面才顯示按鈕
@@ -94,9 +80,9 @@ const showBackButton = computed(() => {
  */
 async function sha256(message) {
   const msgUint8 = new TextEncoder().encode(message);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+  return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
 // 取得由 Vite 注入的 SHA-256 目標值
@@ -105,28 +91,28 @@ const getTargetHash = () => {
     return __SITE_PASSWORD_HASH__;
   } catch (e) {
     // 降級備用：如果 vite 變數未注入，則用 '123456' 的 SHA-256 值
-    return "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92";
+    return '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
   }
 };
 
 const checkAuth = async () => {
   // 核心修正：如果是 SSR 環境（伺服器編譯中），直接跳出，不執行瀏覽器 API
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return;
 
-  const saved = localStorage.getItem("site_auth");
+  const saved = localStorage.getItem('site_auth');
   if (!saved) {
     isLocked.value = true;
     return;
   }
 
   try {
-    const { hash, time } = JSON.parse(saved);
+    const {hash, time} = JSON.parse(saved);
     const targetHash = getTargetHash();
 
     if (hash === targetHash && Date.now() - time < EXPIRE_MS) {
       isLocked.value = false;
     } else {
-      localStorage.removeItem("site_auth");
+      localStorage.removeItem('site_auth');
       isLocked.value = true;
     }
   } catch (e) {
@@ -139,19 +125,19 @@ watch(
   () => route.path,
   () => {
     // 只有在瀏覽器環境才執行
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       checkAuth();
     }
   },
-  { immediate: true },
+  {immediate: true}
 );
 
 const login = async () => {
   if (!inputPassword.value) return;
 
   if (!globalThis.isSecureContext || !globalThis.crypto?.subtle) {
-    errorMsg.value = "目前網站尚未啟用 HTTPS，暫時無法登入";
-    inputPassword.value = "";
+    errorMsg.value = '目前網站尚未啟用 HTTPS，暫時無法登入';
+    inputPassword.value = '';
     return;
   }
 
@@ -161,15 +147,15 @@ const login = async () => {
   if (inputHash === targetHash) {
     const authData = {
       hash: inputHash,
-      time: Date.now(),
+      time: Date.now()
     };
-    localStorage.setItem("site_auth", JSON.stringify(authData));
+    localStorage.setItem('site_auth', JSON.stringify(authData));
     isLocked.value = false;
-    errorMsg.value = "";
-    inputPassword.value = ""; // 清除暫存密碼
+    errorMsg.value = '';
+    inputPassword.value = ''; // 清除暫存密碼
   } else {
-    errorMsg.value = "密碼錯誤";
-    inputPassword.value = "";
+    errorMsg.value = '密碼錯誤';
+    inputPassword.value = '';
   }
 };
 
@@ -178,7 +164,7 @@ const goBack = () => {
   if (window.history.length > 1) {
     window.history.back();
   } else {
-    router.go(`${BASE_URL}${isEnglishPage.value ? "en/" : ""}`);
+    router.go(`${BASE_URL}${isEnglishPage.value ? 'en/' : ''}`);
   }
 };
 

@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "達明機械手臂教材"
-  text: "陽明高中 AI 專班"
+  name: '達明機械手臂教材'
+  text: '陽明高中 AI 專班'
   tagline: 從零基礎到參賽的完整教材
   image:
     src: /tm-robot-logo.png

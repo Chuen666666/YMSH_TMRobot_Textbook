@@ -31,14 +31,16 @@ npm run docs:dev
 
 ## 常用指令
 
-| 指令                   | 用途                  |
-| ---------------------- | --------------------- |
-| `npm run docs:dev`     | 啟動本機開發伺服器    |
-| `npm run docs:build`   | 建置正式版網站        |
-| `npm run docs:preview` | 預覽正式版建置結果    |
-| `npm run lint:md`      | 檢查 Markdown 規範    |
-| `npm run format:md`    | 格式化所有 Markdown   |
-| `npm run check`        | 執行格式、lint 與建置 |
+| 指令                   | 用途                   |
+| ---------------------- | ---------------------- |
+| `npm run docs:dev`     | 啟動本機開發伺服器     |
+| `npm run docs:build`   | 建置正式版網站         |
+| `npm run docs:preview` | 預覽正式版建置結果     |
+| `npm run lint:md`      | 檢查 Markdown 規範     |
+| `npm run format:md`    | 格式化所有 Markdown    |
+| `npm run format`       | 格式化受支援的專案檔案 |
+| `npm run format:check` | 檢查專案檔案格式       |
+| `npm run check`        | 執行格式、lint 與建置  |
 
 ## 專案結構
 

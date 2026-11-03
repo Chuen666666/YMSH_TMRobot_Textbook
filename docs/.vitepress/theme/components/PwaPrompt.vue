@@ -1,79 +1,57 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, ref } from 'vue'
-import { useData } from 'vitepress'
+import {computed, onBeforeMount, ref} from 'vue';
+import {useData} from 'vitepress';
 
-const { lang } = useData()
-const offlineReady = ref(false)
-const needRefresh = ref(false)
-let updateServiceWorker: (() => Promise<void>) | undefined
+const {lang} = useData();
+const offlineReady = ref(false);
+const needRefresh = ref(false);
+let updateServiceWorker: (() => Promise<void>) | undefined;
 
-const isEnglish = computed(() => lang.value.startsWith('en'))
+const isEnglish = computed(() => lang.value.startsWith('en'));
 const message = computed(() => {
   if (needRefresh.value) {
-    return isEnglish.value
-      ? 'New textbook content is available.'
-      : '教材已有新版本可供更新。'
+    return isEnglish.value ? 'New textbook content is available.' : '教材已有新版本可供更新。';
   }
 
-  return isEnglish.value
-    ? 'The textbook is ready for offline use.'
-    : '教材已可離線瀏覽。'
-})
+  return isEnglish.value ? 'The textbook is ready for offline use.' : '教材已可離線瀏覽。';
+});
 
 function close() {
-  offlineReady.value = false
-  needRefresh.value = false
+  offlineReady.value = false;
+  needRefresh.value = false;
 }
 
 async function refresh() {
-  await updateServiceWorker?.()
+  await updateServiceWorker?.();
 }
 
 onBeforeMount(async () => {
-  const { registerSW } = await import('virtual:pwa-register')
+  const {registerSW} = await import('virtual:pwa-register');
   updateServiceWorker = registerSW({
     immediate: true,
     onOfflineReady: () => {
-      offlineReady.value = true
+      offlineReady.value = true;
     },
     onNeedRefresh: () => {
-      needRefresh.value = true
+      needRefresh.value = true;
     },
     onRegisterError: (error) => {
-      console.error('Service worker registration failed:', error)
+      console.error('Service worker registration failed:', error);
     }
-  })
-})
+  });
+});
 </script>
 
 <template>
   <Transition name="pwa-toast">
-    <aside
-      v-if="offlineReady || needRefresh"
-      class="pwa-prompt"
-      role="status"
-      aria-live="polite"
-    >
+    <aside v-if="offlineReady || needRefresh" class="pwa-prompt" role="status" aria-live="polite">
       <p>{{ message }}</p>
       <div class="pwa-actions">
-        <button
-          v-if="needRefresh"
-          class="pwa-primary"
-          type="button"
-          @click="refresh"
-        >
+        <button v-if="needRefresh" class="pwa-primary" type="button" @click="refresh">
           {{ isEnglish ? 'Update now' : '立即更新' }}
         </button>
         <button type="button" @click="close">
-          {{
-            isEnglish
-              ? needRefresh
-                ? 'Later'
-                : 'Close'
-              : needRefresh
-                ? '稍後'
-                : '關閉'
-          }}
+          {{ isEnglish ? (needRefresh ? 'Later' : 'Close') : needRefresh ? '稍後' : '關閉' }}
         </button>
       </div>
     </aside>
