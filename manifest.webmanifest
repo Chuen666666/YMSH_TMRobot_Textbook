@@ -2,13 +2,13 @@
   "name": "陽明高中達明機械手臂教材",
   "short_name": "達明機械手臂教材",
   "description": "給陽明高中 AI 學生專班專屬的達明機械手臂教材",
-  "start_url": "/YMSH_TMRobot_Textbook/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#006583",
   "lang": "zh-TW",
-  "scope": "/YMSH_TMRobot_Textbook/",
-  "id": "/YMSH_TMRobot_Textbook/",
+  "scope": "/",
+  "id": "/",
   "categories": [
     "education"
   ],

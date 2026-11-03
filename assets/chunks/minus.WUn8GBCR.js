@@ -1,0 +1,1 @@
+const s="/old_controller.png",o="/new_controller.png",p="/power.png",n="/stop.png",t="/ma.png",_="/play.png",r="/plus.png",a="/minus.png";export{s as _,o as a,p as b,n as c,t as d,_ as e,r as f,a as g};

@@ -1,0 +1,1 @@
+const t="/robot_arm.png",_="/LM.png",o="/adjust_board.png",s="/mechine_and_controller.png",n="/TM_target.png",p="/TM_tray.png",r="/button_on_eye.jpg";export{t as _,_ as a,o as b,s as c,n as d,p as e,r as f};
