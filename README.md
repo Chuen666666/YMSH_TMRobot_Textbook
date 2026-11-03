@@ -2,7 +2,9 @@
 
 這是一套提供臺北市立陽明高中 AI 專班使用的達明機械手臂教材。網站以 VitePress 建置，內容包含初階、中階與高階課程，並提供繁體中文及英文版本。
 
-網站：<https://chuen666666.com/YMSH_TMRobot_Textbook/>
+網站：<https://tm.chuen666666.com/>
+
+舊網址 <https://chuen666666.com/YMSH_TMRobot_Textbook/> 會自動導向主網址。
 
 > 本教材僅供校內教學使用，請勿公開教材內容、網站密碼或其他受限制資訊。
 
@@ -63,7 +65,7 @@ TMRobot/
 npm run docs:build
 ```
 
-推送至 `main` 分支後，GitHub Actions 會使用儲存庫中的 `SITE_PASSWORD` Secret 建置並部署至 GitHub Pages。
+推送至 `main` 分支後，GitHub Actions 會使用儲存庫中的 `SITE_PASSWORD` Secret 建置並部署至 GitHub Pages，並將自訂網域設為 `tm.chuen666666.com`。DNS 需將 `tm` 的 CNAME 指向 `chuen666666.github.io`。
 
 ## PWA 與離線瀏覽
 

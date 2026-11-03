@@ -65,7 +65,7 @@ import { onMounted, watchEffect, nextTick } from 'vue'
 import { useData } from 'vitepress'
 
 const { isDark } = useData()
-const baseUrl = '/YMSH_TMRobot_Textbook/'
+const baseUrl = '/'
 
 const updateImage = () => {
   if (typeof document === 'undefined') return

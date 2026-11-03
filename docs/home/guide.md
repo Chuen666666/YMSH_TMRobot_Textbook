@@ -39,11 +39,11 @@ outline: false
 
 ## 找到此網站
 
-- 連結：<https://chuen666666.github.io/YMSH_TMRobot_Textbook/>
+- 連結：<https://tm.chuen666666.com/>
 - QR Code：
-    ![QR Code](/QR_Code.png){width=120px}
+  ![QR Code](/QR_Code.png){width=120px}
 - 校網：
-    ![校網中本網站位置](/ymsh_web_page.jpg)
+  ![校網中本網站位置](/ymsh_web_page.jpg)
 
 ## 教材編輯
 

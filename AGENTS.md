@@ -34,8 +34,10 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   synchronized with added, removed, or renamed pages.
 - Put images and other static files in `docs/public/`. Reference them from
   Markdown with root-relative paths such as `/robot_arm.png`.
-- Preserve the configured deployment base, `/YMSH_TMRobot_Textbook/`, when
-  writing theme code, PWA settings, or constructing URLs.
+- The production URL is `https://tm.chuen666666.com/` and the deployment base is
+  `/`. Keep theme code, PWA settings, and constructed URLs aligned with that base.
+- The legacy path `https://chuen666666.com/YMSH_TMRobot_Textbook/` is redirected
+  by the `Chuen666666.github.io` repository; do not use it as the canonical URL.
 - Keep the PWA manifest `id`, `start_url`, and `scope` aligned with the deployment
   base. After changing `docs/public/logo.png`, run `npm run pwa:assets` and commit
   the regenerated icons in `docs/public/`.

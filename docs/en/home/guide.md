@@ -39,11 +39,11 @@ If you find any damage, or if you want to buy extra end tools, tell the library 
 
 ## Finding This Site
 
-- Link: <https://chuen666666.github.io/YMSH_TMRobot_Textbook/>
+- Link: <https://tm.chuen666666.com/>
 - QR Code:
-    ![QR Code](/QR_Code.png){width=120px}
+  ![QR Code](/QR_Code.png){width=120px}
 - School website:
-    ![Where this site appears on the school website](/ymsh_web_page.jpg)
+  ![Where this site appears on the school website](/ymsh_web_page.jpg)
 
 ## Editing the Textbook
 
