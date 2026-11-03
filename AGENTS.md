@@ -28,8 +28,16 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 
 - Preserve the existing language and tone of the page being edited. Use
   Traditional Chinese for the root locale and English for `docs/en/`.
-- When changing shared lesson content, check whether the matching page in the
-  other locale also needs an equivalent update.
+- Use Traditional Chinese as the primary authoring language for new or shared
+  textbook content. After drafting or revising the Traditional Chinese page,
+  create or update the matching English page by translating it into natural
+  English that follows the established lesson style.
+- Every textbook and supporting content page must have matching Traditional
+  Chinese and English versions. When one locale is missing, do not leave the
+  pair incomplete or ask the contributor to translate ordinary prose: use the
+  existing page as the source and create the missing translation yourself.
+- When changing shared lesson content, always update the matching page in the
+  other locale in the same change.
 - Keep navigation and sidebar entries in `docs/.vitepress/config.mts`
   synchronized with added, removed, or renamed pages.
 - Put images and other static files in `docs/public/`. Reference them from
@@ -76,6 +84,14 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   Markdown image for figures and an inline HTML image only for a small control
   icon inside a sentence. Alt text should identify the control or scene rather
   than say only "image".
+- Images without embedded language may be shared by both locales. Screenshots,
+  diagrams, or other images containing readable text must have locale-appropriate
+  Traditional Chinese and English versions, and each page must reference the
+  correct asset. Translate the alt text as well.
+- If a required translated image does not exist, do not silently reuse an image
+  containing text from the other locale and do not claim the bilingual update is
+  complete. Report the affected page, source image path, and missing locale to
+  the contributor, and ask them to provide the corresponding translated image.
 - Structure self-practice material as Task, Verification, and Answer sections
   (`題目／驗證／答案` in Traditional Chinese). In answers, follow the
   TMflow execution order and explain the purpose of each node, not just its name.
@@ -128,6 +144,18 @@ can affect rendering or configuration, run:
 ```bash
 npm run check
 ```
+
+Before considering any textbook or supporting-page change complete, perform a
+bilingual content check:
+
+- Confirm that both the Traditional Chinese page and its matching `docs/en/`
+  page exist. If one is missing, translate the existing page and create it.
+- Compare both pages for equivalent section order, procedures, warnings, task
+  requirements, links, and technical meaning; correct omissions yourself.
+- Compare image references and alt text. Shared language-neutral images may use
+  the same asset, but images containing text must use the correct localized
+  asset. If that asset is unavailable, report the exact missing image and locale
+  to the contributor and request it instead of silently passing validation.
 
 For interactive checks, run:
 
