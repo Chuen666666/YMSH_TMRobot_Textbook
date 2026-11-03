@@ -87,8 +87,9 @@ npm run check
 「安裝應用程式」或「加入主畫面」功能安裝。
 
 第一次在線上完整載入網站後，Service Worker 會快取教材頁面與圖片，之後可在
-離線時閱讀已快取的內容。網站有新版本時，頁面右下角會顯示更新提示，由使用者
-決定何時重新載入。
+離線時閱讀已快取的內容。網站有新版本時，Service Worker 會在背景更新快取並接管
+後續請求，不再顯示手動更新通知，也不會強制中斷目前閱讀；一般重新整理或重新開啟
+網站即可取得最新版。
 
 PWA manifest 與 Service Worker 會在執行 `npm run docs:build` 時產生。若更新
 `docs/public/logo.png`，請執行 `npm run pwa:assets` 重新產生各尺寸應用程式圖示，

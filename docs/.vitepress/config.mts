@@ -151,9 +151,9 @@ const config = defineConfig({
         ]
     ],
 
-    // PWA：提供安裝、離線瀏覽及新版本更新提示
+    // PWA：提供安裝、離線瀏覽及背景自動更新
     pwa: {
-        registerType: 'prompt',
+        registerType: 'autoUpdate',
         includeManifestIcons: false,
         manifest: {
             id: SITE_BASE,

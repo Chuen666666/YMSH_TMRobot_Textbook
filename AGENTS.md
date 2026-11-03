@@ -21,7 +21,7 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 - `docs/.vitepress/config.mts`: locales, navigation, sidebars, base path, and
   PWA settings, and password hash injection.
 - `docs/.vitepress/theme/`: custom theme components, including the password gate
-  keyboard navigation, and PWA update prompt.
+  and keyboard navigation.
 - `.github/workflows/deploy.yml`: GitHub Pages deployment.
 - `name-translations.json`: authoritative bilingual personal-name spellings,
   display forms, sources, and confirmation status.
@@ -66,6 +66,9 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 - Keep the PWA manifest `id`, `start_url`, and `scope` aligned with the deployment
   base. After changing `docs/public/logo.png`, run `npm run pwa:assets` and commit
   the regenerated icons in `docs/public/`.
+- Keep PWA updates automatic. Do not add an update prompt unless the update
+  strategy is intentionally changed back from `autoUpdate`; ordinary releases
+  should update the service worker and caches without user confirmation.
 - Keep the Node.js requirement in `package.json`, `.github/workflows/deploy.yml`,
   and `README.md` synchronized. PWA 2.x requires Node.js 22.14 or newer.
 - Do not expose real passwords or repository secrets. `VITE_SITE_PASSWORD` is
