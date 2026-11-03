@@ -1,0 +1,86 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://tm.chuen666666.com/schemas/name-translations.schema.json",
+    "title": "TMRobot personal-name translation registry",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["$schema", "version", "description", "passportFormatReference", "names"],
+    "properties": {
+        "$schema": { "const": "./schemas/name-translations.schema.json" },
+        "version": { "const": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "passportFormatReference": { "type": "string", "pattern": "^https://" },
+        "names": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nameEntry" } }
+    },
+    "$defs": {
+        "nonEmptyString": { "type": "string", "minLength": 1, "pattern": "\\S" },
+        "nameEntry": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["traditionalChinese", "english", "source", "status"],
+            "properties": {
+                "traditionalChinese": { "type": "string", "minLength": 2, "pattern": "[\\u3400-\\u9fff]" },
+                "english": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["default", "award"],
+                    "properties": {
+                        "default": { "$ref": "#/$defs/nonEmptyString" },
+                        "award": { "oneOf": [{ "$ref": "#/$defs/nonEmptyString" }, { "type": "null" }] }
+                    }
+                },
+                "source": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["kind", "reference"],
+                    "properties": {
+                        "kind": {
+                            "enum": [
+                                "project-provided-anonymous",
+                                "project-provided-romanization",
+                                "existing-project-translation",
+                                "boca-draft"
+                            ]
+                        },
+                        "reference": {
+                            "type": "array",
+                            "minItems": 1,
+                            "uniqueItems": true,
+                            "items": { "$ref": "#/$defs/nonEmptyString" }
+                        },
+                        "note": { "$ref": "#/$defs/nonEmptyString" }
+                    }
+                },
+                "status": { "enum": ["accepted", "needs-confirmation"] }
+            },
+            "allOf": [
+                {
+                    "if": {
+                        "type": "object",
+                        "properties": {
+                            "source": {
+                                "type": "object",
+                                "properties": { "kind": { "const": "boca-draft" } },
+                                "required": ["kind"]
+                            }
+                        }
+                    },
+                    "then": { "type": "object", "properties": { "status": { "const": "needs-confirmation" } } }
+                },
+                {
+                    "if": { "type": "object", "properties": { "status": { "const": "needs-confirmation" } } },
+                    "then": {
+                        "type": "object",
+                        "properties": {
+                            "source": {
+                                "type": "object",
+                                "properties": { "kind": { "const": "boca-draft" } },
+                                "required": ["kind"]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

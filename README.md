@@ -31,16 +31,17 @@ npm run docs:dev
 
 ## 常用指令
 
-| 指令                   | 用途                   |
-| ---------------------- | ---------------------- |
-| `npm run docs:dev`     | 啟動本機開發伺服器     |
-| `npm run docs:build`   | 建置正式版網站         |
-| `npm run docs:preview` | 預覽正式版建置結果     |
-| `npm run lint:md`      | 檢查 Markdown 規範     |
-| `npm run format:md`    | 格式化所有 Markdown    |
-| `npm run format`       | 格式化受支援的專案檔案 |
-| `npm run format:check` | 檢查專案檔案格式       |
-| `npm run check`        | 執行格式、lint 與建置  |
+| 指令                     | 用途                   |
+| ------------------------ | ---------------------- |
+| `npm run docs:dev`       | 啟動本機開發伺服器     |
+| `npm run docs:build`     | 建置正式版網站         |
+| `npm run docs:preview`   | 預覽正式版建置結果     |
+| `npm run lint:md`        | 檢查 Markdown 規範     |
+| `npm run format:md`      | 格式化所有 Markdown    |
+| `npm run format`         | 格式化受支援的專案檔案 |
+| `npm run format:check`   | 檢查專案檔案格式       |
+| `npm run validate:names` | 驗證雙語姓名登錄檔     |
+| `npm run check`          | 執行格式、lint 與建置  |
 
 ## 專案結構
 
@@ -54,6 +55,9 @@ TMRobot/
 │  ├─ home/             # 首頁相關頁面
 │  ├─ public/           # 圖片等靜態資源
 │  └─ .vitepress/       # VitePress 設定與自訂元件
+├─ schemas/             # JSON Schema
+├─ scripts/             # 專案驗證腳本
+├─ name-translations.json # 雙語姓名與來源登錄檔
 ├─ .github/workflows/   # GitHub Pages 自動部署流程
 └─ package.json         # 相依套件與 npm 指令
 ```
@@ -63,6 +67,11 @@ TMRobot/
 教材頁面使用 Markdown 撰寫。新增頁面後，請同步更新
 `docs/.vitepress/config.mts` 中對應語言的導覽列或側邊欄設定；圖片請放在
 `docs/public/`，並以網站根目錄路徑引用，例如 `/robot_arm.png`。
+
+翻譯人名以前，請先查閱 `name-translations.json`，並直接沿用其中已確認的顯示值。
+若要修改既有人名，請先更新登錄檔的翻譯、來源與狀態，再同步修改所有引用頁面。
+變更後可執行 `npm run validate:names`，檢查 Schema、重複姓名、來源路徑及登錄值是否
+與頁面一致。
 
 建議在 VS Code 安裝專案推薦的 Prettier 與 markdownlint 擴充套件；Markdown 檔案會在儲存時格式化並顯示 lint 問題。完成修改後，執行以下指令同時檢查 Markdown 格式、lint 與網站建置：
 

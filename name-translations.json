@@ -1,4 +1,5 @@
 {
+    "$schema": "./schemas/name-translations.schema.json",
     "version": 1,
     "description": "Authoritative Traditional Chinese-to-English personal-name registry for this repository.",
     "passportFormatReference": "https://www.boca.gov.tw/sp-natr-singleform-1.html",

@@ -25,6 +25,9 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 - `.github/workflows/deploy.yml`: GitHub Pages deployment.
 - `name-translations.json`: authoritative bilingual personal-name spellings,
   display forms, sources, and confirmation status.
+- `schemas/name-translations.schema.json`: JSON Schema for the name registry.
+- `scripts/validate-name-translations.js`: schema and semantic validation for
+  registered names and their referenced pages.
 
 ## Editing Rules
 
@@ -149,7 +152,7 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 ## Other Formatting
 
 - `npm run format` and `npm run format:check` use the repository Prettier config
-  for Markdown, TypeScript, JavaScript, Vue, JSON, JSONC, and YAML. They do not
+  for Markdown, JavaScript, TypeScript, Vue, JSON, JSONC, and YAML. They do not
   impose markdownlint rules on non-Markdown files.
 - The repository Prettier options mirror the maintainer's VS Code preferences:
   four-space TypeScript/JavaScript and JSON, 120-column lines, single-quoted
@@ -158,9 +161,10 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 - Standalone CSS uses VS Code's built-in CSS formatter with two-space
   indentation. It is not currently part of the Prettier check; do not run the
   Markdown scripts on CSS.
-- Do not introduce ESLint, Stylelint, or another semantic linter unless the
-  repository adopts corresponding rules and editor support. The current checks
-  intentionally validate formatting plus Markdown semantics only.
+- Do not introduce ESLint, Stylelint, or another general-purpose semantic linter
+  unless the repository adopts corresponding rules and editor support. Ajv and
+  `npm run validate:names` are intentionally scoped only to
+  `name-translations.json`.
 
 ## Validation
 
@@ -185,6 +189,9 @@ bilingual content check:
 - Compare every translated personal name with `name-translations.json`. Add any
   missing entry with its source and status, and reject page-specific spelling or
   formatting that differs from the registered display value.
+
+Run `npm run validate:names` after changing the name registry, its schema, or a
+page referenced by a registry entry. The command must pass before committing.
 
 For interactive checks, run:
 
