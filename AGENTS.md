@@ -104,14 +104,6 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   Markdown image for figures and an inline HTML image only for a small control
   icon inside a sentence. Alt text should identify the control or scene rather
   than say only "image".
-- Images without embedded language may be shared by both locales. Screenshots,
-  diagrams, or other images containing readable text must have locale-appropriate
-  Traditional Chinese and English versions, and each page must reference the
-  correct asset. Translate the alt text as well.
-- If a required translated image does not exist, do not silently reuse an image
-  containing text from the other locale and do not claim the bilingual update is
-  complete. Report the affected page, source image path, and missing locale to
-  the contributor, and ask them to provide the corresponding translated image.
 - Structure self-practice material as Task, Verification, and Answer sections
   (`題目／驗證／答案` in Traditional Chinese). In answers, follow the
   TMflow execution order and explain the purpose of each node, not just its name.
@@ -132,8 +124,8 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   the contributor that confirmation is required. Never present an unconfirmed
   draft as the person's verified passport name.
 - Keep paired Traditional Chinese and English lessons equivalent in technical
-  meaning, safety warnings, task requirements, and image references. A
-  translation may adapt wording, but it must not add or omit operating behavior.
+  meaning, safety warnings, and task requirements. A translation may adapt
+  wording, but it must not add or omit operating behavior.
 
 ## Markdown Tooling
 
@@ -185,10 +177,6 @@ bilingual content check:
   page exist. If one is missing, translate the existing page and create it.
 - Compare both pages for equivalent section order, procedures, warnings, task
   requirements, links, and technical meaning; correct omissions yourself.
-- Compare image references and alt text. Shared language-neutral images may use
-  the same asset, but images containing text must use the correct localized
-  asset. If that asset is unavailable, report the exact missing image and locale
-  to the contributor and request it instead of silently passing validation.
 - Compare every translated personal name with `name-translations.json`. Add any
   missing entry with its source and status, and reject page-specific spelling or
   formatting that differs from the registered display value.
