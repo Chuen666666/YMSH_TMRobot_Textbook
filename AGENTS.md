@@ -99,6 +99,15 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   `你` when guiding an action while keeping safety statements unambiguous. English
   lessons should read naturally and use the same established technical terms,
   not mirror Chinese sentence structure word for word.
+- On `docs/home/award.md` and `docs/en/home/award.md`, render Chinese personal
+  names using Republic of China passport conventions. Use the person's exact
+  passport romanization when available and format it as `SURNAME, GIVEN-NAME`,
+  with the family name first, a comma after it, and a hyphen between given-name
+  syllables. Do not reverse the name into Western order or substitute a nickname,
+  username, or informal spelling. If the official spelling is unknown, use the
+  Bureau of Consular Affairs name-translation system only to prepare a draft,
+  tell the contributor that confirmation is required, and do not present the
+  draft as the person's verified passport name.
 - Keep paired Traditional Chinese and English lessons equivalent in technical
   meaning, safety warnings, task requirements, and image references. A
   translation may adapt wording, but it must not add or omit operating behavior.
