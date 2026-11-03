@@ -31,11 +31,14 @@ npm run docs:dev
 
 ## 常用指令
 
-| 指令                   | 用途               |
-| ---------------------- | ------------------ |
-| `npm run docs:dev`     | 啟動本機開發伺服器 |
-| `npm run docs:build`   | 建置正式版網站     |
-| `npm run docs:preview` | 預覽正式版建置結果 |
+| 指令                   | 用途                  |
+| ---------------------- | --------------------- |
+| `npm run docs:dev`     | 啟動本機開發伺服器    |
+| `npm run docs:build`   | 建置正式版網站        |
+| `npm run docs:preview` | 預覽正式版建置結果    |
+| `npm run lint:md`      | 檢查 Markdown 規範    |
+| `npm run format:md`    | 格式化所有 Markdown   |
+| `npm run check`        | 執行格式、lint 與建置 |
 
 ## 專案結構
 
@@ -59,10 +62,10 @@ TMRobot/
 `docs/.vitepress/config.mts` 中對應語言的導覽列或側邊欄設定；圖片請放在
 `docs/public/`，並以網站根目錄路徑引用，例如 `/robot_arm.png`。
 
-完成修改後，執行以下指令確認網站可正常建置：
+建議在 VS Code 安裝專案推薦的 Prettier 與 markdownlint 擴充套件；Markdown 檔案會在儲存時格式化並顯示 lint 問題。完成修改後，執行以下指令同時檢查 Markdown 格式、lint 與網站建置：
 
 ```bash
-npm run docs:build
+npm run check
 ```
 
 推送至 `main` 分支後，GitHub Actions 會使用儲存庫中的 `SITE_PASSWORD` Secret 建置並部署至 GitHub Pages，並將自訂網域設為 `tm.chuen666666.com`。DNS 需將 `tm` 的 CNAME 指向 `chuen666666.github.io`。

@@ -5,6 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "npm run lint:md && npm run format:md:check && npm run docs:build",
+    "lint:md": "markdownlint-cli2",
+    "format:md": "prettier --write \"docs/**/*.md\" README.md AGENTS.md",
+    "format:md:check": "prettier --check \"docs/**/*.md\" README.md AGENTS.md",
     "pwa:assets": "pwa-assets-generator",
     "docs:dev": "cd docs && vitepress dev .",
     "docs:build": "cd docs && vitepress build .",
@@ -21,8 +25,17 @@
     "@vite-pwa/assets-generator": "2.0.0",
     "@vite-pwa/vitepress": "2.0.1",
     "magicast": "0.5.5",
+    "markdownlint-cli2": "0.24.0",
+    "prettier": "3.9.10",
     "rolldown": "1.2.16",
     "vitepress": "^1.6.4",
     "vue": "3.5.44"
+  },
+  "overrides": {
+    "katex": "0.18.2",
+    "re2js": "2.8.7"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true
   }
 }

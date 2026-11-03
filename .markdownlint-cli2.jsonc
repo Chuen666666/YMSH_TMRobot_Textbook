@@ -1,0 +1,23 @@
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD024": {
+      "siblings_only": true,
+    },
+    "MD025": {
+      "front_matter_title": "",
+    },
+    "MD026": false,
+    "MD033": {
+      "allowed_elements": ["br", "div", "img", "script", "span", "style"],
+    },
+    "MD041": false,
+  },
+  "globs": ["docs/**/*.md", "README.md", "AGENTS.md"],
+  "ignores": [
+    "node_modules/**",
+    "docs/.vitepress/cache/**",
+    "docs/.vitepress/dist/**",
+  ],
+}

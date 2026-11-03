@@ -2,14 +2,41 @@ name: Deploy VitePress site to Pages
 
 on:
   push:
-    branches: [main]
-
-permissions:
-  contents: write
+  pull_request:
 
 jobs:
-  build-and-deploy:
+  markdown-quality:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint Markdown
+        run: npm run lint:md
+
+      - name: Check Markdown formatting
+        run: npm run format:md:check
+
+      - name: Build documentation
+        run: npm run docs:build
+
+  build-and-deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: markdown-quality
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v7
