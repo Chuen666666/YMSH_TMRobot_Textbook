@@ -6,14 +6,21 @@
         <h2>專班教材存取限制</h2>
         <p>請輸入授權密碼以繼續閱覽</p>
 
-        <div class="input-group">
-          <input v-model="inputPassword" type="password" placeholder="請輸入密碼" @keyup.enter="login" />
-          <button @click="login" class="login-btn">進入網站</button>
+        <form class="input-group" @submit.prevent="login">
+          <input
+            id="site-password"
+            v-model="inputPassword"
+            name="site-password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="請輸入密碼"
+          />
+          <button type="submit" class="login-btn">進入網站</button>
 
           <div class="helper-link">
             <a :href="guideUrl">忘記密碼或需要協助？</a>
           </div>
-        </div>
+        </form>
 
         <p v-if="errorMsg" class="error-msg">{{ errorMsg }}</p>
       </div>
