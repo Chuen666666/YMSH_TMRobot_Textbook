@@ -3,16 +3,10 @@ name: Deploy VitePress site to Pages
 on:
   push:
     paths-ignore:
-      - 'AGENTS.md'
-      - 'README.md'
-      - 'api-examples.md'
-      - 'markdown-examples.md'
+      - '*.md'
   pull_request:
     paths-ignore:
-      - 'AGENTS.md'
-      - 'README.md'
-      - 'api-examples.md'
-      - 'markdown-examples.md'
+      - '*.md'
 
 jobs:
   markdown-quality:

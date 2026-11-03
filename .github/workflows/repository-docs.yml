@@ -1,0 +1,33 @@
+name: Check repository Markdown
+
+on:
+  push:
+    paths:
+      - '*.md'
+  pull_request:
+    paths:
+      - '*.md'
+
+jobs:
+  markdown-quality:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint Markdown
+        run: npm run lint:md
+
+      - name: Check Markdown formatting
+        run: npm run format:md:check

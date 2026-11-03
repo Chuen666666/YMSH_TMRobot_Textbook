@@ -81,9 +81,9 @@ npm run check
 
 推送至 `main` 分支後，GitHub Actions 會使用儲存庫中的 `SITE_PASSWORD` Secret 建置並部署至 GitHub Pages，並將自訂網域設為 `tm.chuen666666.com`。DNS 需將 `tm` 的 CNAME 指向 `chuen666666.github.io`。
 
-若一次推送只修改不會發布到網站的根目錄協作文件（`AGENTS.md`、`README.md`、
-`api-examples.md` 或 `markdown-examples.md`），GitHub Actions 會略過該次執行以節省
-資源。`docs/**/*.md` 是正式教材內容，修改後仍會正常檢查及部署。
+若一次推送只修改不會發布到網站的根目錄 `*.md` 文件，GitHub Actions 只會執行輕量的
+Markdown lint 與格式檢查，不會建置或部署網站。`docs/**/*.md` 是正式教材內容，修改後
+仍會執行完整檢查及部署。
 
 ## PWA 與離線瀏覽
 

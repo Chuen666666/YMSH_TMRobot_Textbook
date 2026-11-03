@@ -23,6 +23,8 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 - `docs/.vitepress/theme/`: custom theme components, including the password gate
   and keyboard navigation.
 - `.github/workflows/deploy.yml`: GitHub Pages deployment.
+- `.github/workflows/repository-docs.yml`: lightweight checks for root-level
+  Markdown files that are not published to the website.
 - `name-translations.json`: authoritative bilingual personal-name spellings,
   display forms, sources, and confirmation status.
 - `schemas/name-translations.schema.json`: JSON Schema for the name registry.
@@ -130,7 +132,7 @@ program's TM Robot courses. Traditional Chinese pages live directly under
 ## Markdown Tooling
 
 - The `lint:md`, `format:md`, and `format:md:check` scripts apply only to
-  `docs/**/*.md`, `README.md`, and `AGENTS.md`. Do not apply these commands or
+  `docs/**/*.md` and root-level `*.md` files. Do not apply these commands or
   infer markdownlint rules for Vue, TypeScript, JavaScript, CSS, YAML, JSON, or
   any other non-Markdown file type.
 - Use `npm run format:md` to format Markdown intentionally. Do not run an
@@ -139,10 +141,10 @@ program's TM Robot courses. Traditional Chinese pages live directly under
   every triggered GitHub Actions run until it completes. If any run fails,
   report the failing workflow, job, step, file when applicable, and diagnostic
   to the user instead of claiming the push succeeded.
-- A push that changes only `AGENTS.md`, `README.md`, `api-examples.md`, or
-  `markdown-examples.md` is intentionally ignored by the workflow. In that case,
-  confirm that no run was expected instead of waiting for one. Never treat
-  `docs/**/*.md` as ignorable because those files are published textbook pages.
+- A push that changes only root-level `*.md` files must trigger only the
+  lightweight repository Markdown workflow. Monitor that run, but do not expect
+  a site build or deployment. Never treat `docs/**/*.md` as deployment-free
+  because those files are published textbook pages.
 - If `Lint Markdown` fails, or `Check formatting` fails for a Markdown file,
   explain the exact Markdown issue and ask whether the user wants it fixed
   before editing and pushing another commit. Do not automatically rewrite lesson

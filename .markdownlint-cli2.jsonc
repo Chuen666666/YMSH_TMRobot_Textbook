@@ -16,6 +16,6 @@
         "MD055": { "style": "leading_and_trailing" },
         "MD056": false
     },
-    "globs": ["docs/**/*.md", "README.md", "AGENTS.md"],
+    "globs": ["docs/**/*.md", "*.md"],
     "ignores": ["node_modules/**", "docs/.vitepress/cache/**", "docs/.vitepress/dist/**"]
 }
