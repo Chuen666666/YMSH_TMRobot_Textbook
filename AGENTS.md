@@ -10,6 +10,13 @@ This repository contains a bilingual VitePress textbook for the YMSH AI
 program's TM Robot courses. Traditional Chinese pages live directly under
 `docs/`; English pages live under `docs/en/`.
 
+## Dependency Security
+
+- Read `SECURITY.md` before changing VitePress, Vite, esbuild, PWA tooling, or their lockfile entries.
+- Update the register whenever an advisory, dependency chain, production boundary, or accepted-risk decision changes.
+- Do not use `npm audit fix --force` or downgrade the documentation toolchain merely to silence audit findings.
+- A proposed fix must pass `npm ci` and `npm run check` before an accepted risk is marked resolved.
+
 ## Important Paths
 
 - `docs/index.md`: Traditional Chinese home page.
