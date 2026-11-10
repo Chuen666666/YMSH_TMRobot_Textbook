@@ -16,7 +16,7 @@
 ## 本機執行
 
 ```bash
-npm install
+npm ci
 npm run docs:dev
 ```
 
